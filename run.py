@@ -1,8 +1,6 @@
 """ This program makes a battleship game"""
-
+import random
 import pandas as pd
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 
 class battleshipGame:
     """ A class which holds the code for a battleship game """
@@ -22,4 +20,3 @@ class battleshipGame:
         self.ships = []
         self.hits = 0
         self.scores_df = pd.DataFrame(columns=['Player', 'Score'])
-        self.gsheet = None
