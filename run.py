@@ -39,3 +39,15 @@ class battleshipGame:
             print(leaderboard)
         except Exception as e:
             print("Error displaying the leaderboard: ", e)
+    def save_scores_csv(self,filename="battleship_score.csv"):
+        """ 
+        Saves the scores to the csv file
+
+        filename (str) = the filename which will save the scores dataframe
+        """
+        try:
+            self.scores_df.to_csv(filename, index=False)
+            print("Scores Saved to CSV:", filename)
+        except Exception as e:
+            print("Error Saving scores to CSV:", e)
+            
