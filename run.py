@@ -79,3 +79,13 @@ class battleshipGame:
                 for i in range(length):
                     self.board[row + i][col] = 'S'
             self.ships.append((row,col,length, horizontal))
+    def print_board(self,show_ships=False):
+        """ 
+        prints the game board
+        show_ships(bool): whether to reveal ship locations
+        """
+        print("   " + " ".join(str(i) for i in range(self.board_size)))
+        for i in range(self.board_size):
+            row = ' '.join(self.board[i]) if not show_ships else ' '.join
+            (['S' if cell == 'S' else 'O' for cell in self.board[i]])
+            print(f"{i} | {row}")
