@@ -50,4 +50,15 @@ class battleshipGame:
             print("Scores Saved to CSV:", filename)
         except Exception as e:
             print("Error Saving scores to CSV:", e)
-            
+    def load_scores_csv(self,filename="battleship_score.csv"):
+        """ 
+        loads the dataframe from the CSV file
+        """
+        try:
+            self.scores_df = pd.read(filename)
+            print("Scores loaded from CSV file", filename)
+        except FileNotFoundError:
+            print("Score leaderboard not found starting with an empty board")
+        except Exception as e:
+            print("Error loading scoreboard", e)
+    
