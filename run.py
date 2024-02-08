@@ -61,4 +61,21 @@ class battleshipGame:
             print("Score leaderboard not found starting with an empty board")
         except Exception as e:
             print("Error loading scoreboard", e)
-    
+    def place_ships(self):
+        """ 
+        function to randomly place the ships
+        """
+        for _ in range(self.num_ships):
+            length = random.randint(2,5)
+            horizontal = random.choice([True, False])
+            if horizontal:
+                row = random.randint(0, self.board_size - 1)
+                col = random.randint(0, self.board_size - length)
+                for i in range(length):
+                    self.board[row][col + i] = 'S'
+            else:
+                row = random.randint(0, self.board_size - length)
+                col = random.randint(0, self.board_size - 1)
+                for i in range(length):
+                    self.board[row + i][col] = 'S'
+            self.ships.append((row,col,length, horizontal))
