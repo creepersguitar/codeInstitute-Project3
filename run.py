@@ -20,3 +20,22 @@ class battleshipGame:
         self.ships = []
         self.hits = 0
         self.scores_df = pd.DataFrame(columns=['Player', 'Score'])
+    def update_scores(self, player, score):
+        """ 
+        updates the dataframe with the scores and player name
+        arguments:
+            player(str)
+            score(int) - The players score
+        """
+        self.scores_df = self.scores_df.append({'Player' : player, 'Score' : score}, ignore_index=True)
+
+    def display_leaderboard(self):
+        """ 
+        Shows the leaderboard with top players and their scores
+        """
+        try:
+            leaderboard = self.scores_df.sort_values(by='Score', ascending=False).head(10)
+            print("Leaderboard:\n")
+            print(leaderboard)
+        except Exception as e:
+            print("Error displaying the leaderboard: ", e)
