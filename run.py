@@ -252,4 +252,20 @@ class battleshipGame:
             print("\n game interrpted by user!")
         except Exception as e:
             print("Error occurred during gameplay:", e)
-            
+if __name__ == "__main__":
+    try:
+        print("Welcome to battleships!")
+        board_size = int(input("enter the board size (default is 8): ") or 8)
+        num_ships = int(input("Enter number of ships (default is 5): ") or 5)
+        player_vs_ai = input("Play against AI? (y/n default is yes): ").lower() !="n"
+        if player_vs_ai:
+            difficulty = input("""Choose difficulty 
+            (easy/medium/hard/cheating/impossible, default is medium):""")
+            difficulty.lower() or 'medium'
+        else:
+            difficulty = 'medium'
+            game = battleshipGame(board_size,num_ships,player_vs_ai,difficulty)
+            game.load_scores_csv()
+            game.play()
+    except Exception as e:
+        print("Unexpected error occurred:", e)
