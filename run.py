@@ -263,6 +263,7 @@ if __name__ == "__main__":
             (easy/medium/hard/cheating/impossible, default is medium):""")
             difficulty.lower() or 'medium'
             game = battleshipGame(board_size,num_ships,player_vs_ai,difficulty)
+            game.play()
         else:
             difficulty = 'medium'
             game = battleshipGame(board_size,num_ships,player_vs_ai,difficulty)
