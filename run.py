@@ -109,4 +109,17 @@ class battleshipGame:
     def player_guess(self):
         """ 
         takes input for players guess
+        returns a tuple which has rows and cols from the guess
         """
+        try:
+            row = int(input("Enter row number: "))
+            col = int(input("Enter col number: "))
+            if not self.valid_guess(row,col):
+                print("Invalid guess ")
+                print("Try again! ")
+                return self.player_guess()
+            return row,col
+        except ValueError:
+            print("Invalid input!")
+            print("Make sure to enter numbers(integers)")
+            return self.player_guess()
