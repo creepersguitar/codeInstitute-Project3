@@ -1,6 +1,7 @@
 """ This program makes a battleship game"""
 import random
 import pandas as pd
+import time as t
 
 class battleshipGame:
     """ A class which holds the code for a battleship game """
@@ -125,7 +126,7 @@ class battleshipGame:
             print("Make sure to enter numbers(integers)")
             return self.player_guess()
 
-    def ai_guess(self):
+    def ai_guess(self, guess_stragety):
         """ 
         does the AI guess
         also returns a tuple of the rows and cols from the guess
@@ -152,6 +153,7 @@ class battleshipGame:
         else:
             row, col = self.ai_guess_medium()
         return row, col
+        return guess_stragety()
     def ai_guess_advanced(self):
         """ 
         Generates AI's guess in a more advanced way
@@ -196,3 +198,58 @@ class battleshipGame:
         col = random.randint(0, self.board_size - 1)
         return row, col
     
+    def play(self):
+        """ 
+        Starts the game and controls flow of gameplay
+        """
+        try:
+            if self.difficulty == 'impossible':
+                print("Welcome to impossible mode!")
+                t.sleep(1)
+                print("You have no chance of winning")
+                return
+            
+            self.place_ships()
+            while self.hits < self.num_ships:
+                print("\nPlayers Turn" if self.player_vs_ai else "\nPlayer 1 go")
+                self.print_board()
+                if self.player_vs_ai:
+                    guess_row, guess_col = self.player_guess()
+                else:
+                    guess_row = self.player_guess()
+                    guess_col = self.player_guess()
+                if self.board[guess_row][guess_col] == 'S':
+                    print("Aye ye hit me battleship!")
+                    self.board[guess_row][guess_col] = 'X'
+                    self.hits += 1
+                else:
+                    print("phew you missed!")
+                    self.board[guess_row][guess_col] = 'X'
+                if self.hits == self.num_ships:
+                    print("Congrats! you have sunk all my battleships!")
+                    if self.player_vs_ai:
+                        player_name = "Player"
+                    else:
+                        player_name = "Player 1"
+                    self.update_scores(player_name, 100)
+                    self.display_leaderboard()
+                    self.save_scores_csv()
+
+                if self.player_vs_ai:
+                    print("\nAI turn")
+                    ai_guess_row
+                    , ai_guess_col = self.ai_guess(self.ai_guess_advanced)
+                    print(f"AI Guesses: {ai_guess_row}, {ai_guess_col}")
+                    if self.board[ai_guess_row][ai_guess_col] == 'S':
+                        print("AI has been hit!")
+                        self.board[ai_guess_row][ai_guess_col] = 'X'
+                        self.hits += 1
+                    else:
+                        print("AI has missed! ")
+                        t.sleep(1)
+                        print("You may have another go!")
+        except KeyboardInterrupt:
+            print("\n game interrpted by user!")
+        except Exception as e:
+            print("Error occurred during gameplay:", e)
+            
