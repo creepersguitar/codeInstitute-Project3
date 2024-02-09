@@ -86,8 +86,10 @@ class battleshipGame:
         """
         print("   " + " ".join(str(i) for i in range(self.board_size)))
         for i in range(self.board_size):
-            row = ' '.join(self.board[i]) if not show_ships else ' '.join
-            (['S' if cell == 'S' else 'O' for cell in self.board[i]])
+            if not show_ships:
+                row = ' '.join(self.board[i])
+            else:
+                row = ' '.join(['S' if cell == 'S' else 'O' for cell in self.board[i]])
             print(f"{i} | {row}")
     
     def valid_guess(self, row, col):
