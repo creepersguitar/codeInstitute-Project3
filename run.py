@@ -176,4 +176,14 @@ class battleshipGame:
                             if self.board[x][y] == 'O':
                                 return x,y
         return self.ai_guess_random()
-        
+    def probability_based(self):
+        """ 
+        Generates AI guess using probability
+        returns a tuple with row n col indicies
+        """
+        max_prob = max(max(row) for row in self.ai_probabilities)
+        for i in range (self.board_size):
+            for j in range(self.board_size):
+                if self.ai_probabilities[i][j] == max_prob:
+                    return i,j
+        return self.ai_guess_random()
