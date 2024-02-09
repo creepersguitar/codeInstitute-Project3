@@ -20,7 +20,6 @@ class battleshipGame:
         self.board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
         self.ships = []
         self.hits = 0
-        self.ai = ImpossibleAI(board_size)
         self.scores_df = pd.DataFrame(columns=['Player', 'Score'])
     def update_scores(self, player, score):
         """ 
@@ -138,8 +137,8 @@ class battleshipGame:
         elif self.difficulty == 'impossible':
              row, col = self.ai_guess_advanced()
             # choose random cell if probabilities are equal
-            return random.randint(0, self.board_size - 1)
-            return random.randint(0, self.board_size - 1)
+             return random.randint(0, self.board_size - 1)
+             return random.randint(0, self.board_size - 1)
         elif self.difficulty == 'easy':
             row = random.randint(0, self.board_size - 1)
             col = random.randint(0, self.board_size - 1)
@@ -237,8 +236,9 @@ class battleshipGame:
 
                 if self.player_vs_ai:
                     print("\nAI turn")
-                    ai_guess_row
-                    , ai_guess_col = self.ai_guess(self.ai_guess_advanced)
+                    ai_guess_row, ai_guess_col = self.ai_guess(
+                        self.ai_guess_advanced
+                        )
                     print(f"AI Guesses: {ai_guess_row}, {ai_guess_col}")
                     if self.board[ai_guess_row][ai_guess_col] == 'S':
                         print("AI has been hit!")
@@ -262,6 +262,7 @@ if __name__ == "__main__":
             difficulty = input("""Choose difficulty 
             (easy/medium/hard/cheating/impossible, default is medium):""")
             difficulty.lower() or 'medium'
+            game = battleshipGame(board_size,num_ships,player_vs_ai,difficulty)
         else:
             difficulty = 'medium'
             game = battleshipGame(board_size,num_ships,player_vs_ai,difficulty)
