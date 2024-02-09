@@ -162,4 +162,18 @@ class battleshipGame:
         else:
             row, col = self.probability_based()
         return row,col
-    
+    def target_tracking(self):
+        """ 
+        Generates AI guess using tracking
+        returning tuple of row and col indicies
+        """
+        for i in range(self.board_size):
+            for j in range(self.board_size):
+                if self.board[i][j] == 'H':
+                    for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                        x, y = i + dx, j + dy
+                        if 0 <= x < self.board_size and 0 <= y < self.board_size:
+                            if self.board[x][y] == 'O':
+                                return x,y
+        return self.ai_guess_random()
+        
