@@ -89,3 +89,22 @@ class battleshipGame:
             row = ' '.join(self.board[i]) if not show_ships else ' '.join
             (['S' if cell == 'S' else 'O' for cell in self.board[i]])
             print(f"{i} | {row}")
+    
+    def valid_guess(self, row, col):
+        """ 
+        Checks for a valid guess (within boundaries and not already guessed)
+        row (int) = the row index of the guess
+        col (int) = the col index of the guess
+
+        returns true if guess is valid false if not
+        """
+        return (
+            0 <= row < self.board_size and
+            0 <= col < self.board_size and
+            self.board[row][col] != 'X'
+        )
+    
+    def player_guess(self):
+        """ 
+        takes input for players guess
+        """
