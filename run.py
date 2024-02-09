@@ -135,11 +135,7 @@ class battleshipGame:
             col = random.randint(0, self.board_size - 1)
             return row,col
         elif self.difficulty == 'impossible':
-            max_prob = max(max(row) for row in self.ai.probabilities)
-            for i in range(self.board_size):
-                for j in range(self.board_size):
-                    if self.ai.probabilities[i][j] == max_prob:
-                        return i,j
+             row, col = self.ai_guess_advanced()
             # choose random cell if probabilities are equal
             return random.randint(0, self.board_size - 1)
             return random.randint(0, self.board_size - 1)
@@ -156,3 +152,14 @@ class battleshipGame:
         else:
             row, col = self.ai_guess_medium()
         return row, col
+    def ai_guess_advanced(self):
+        """ 
+        Generates AI's guess in a more advanced way
+        returns a tuple containing row and col indicies of guess
+        """
+        if self.hits > 0:
+            row, col = self.target_tracking()
+        else:
+            row, col = self.probability_based()
+        return row,col
+    
