@@ -19,6 +19,7 @@ class battleshipGame:
         self.board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
         self.ships = []
         self.hits = 0
+        self.ai = ImpossibleAI(board_size)
         self.scores_df = pd.DataFrame(columns=['Player', 'Score'])
     def update_scores(self, player, score):
         """ 
@@ -123,3 +124,35 @@ class battleshipGame:
             print("Invalid input!")
             print("Make sure to enter numbers(integers)")
             return self.player_guess()
+
+    def ai_guess(self):
+        """ 
+        does the AI guess
+        also returns a tuple of the rows and cols from the guess
+        """
+        if self.difficulty == 'cheating':
+            row = random.randint(0, self.board_size - 1)
+            col = random.randint(0, self.board_size - 1)
+            return row,col
+        elif self.difficulty == 'impossible':
+            max_prob = max(max(row) for row in self.ai.probabilities)
+            for i in range(self.board_size):
+                for j in range(self.board_size):
+                    if self.ai.probabilities[i][j] == max_prob:
+                        return i,j
+            # choose random cell if probabilities are equal
+            return random.randint(0, self.board_size - 1)
+            return random.randint(0, self.board_size - 1)
+        elif self.difficulty == 'easy':
+            row = random.randint(0, self.board_size - 1)
+            col = random.randint(0, self.board_size - 1)
+            while not self.valid_guess(row, col):
+                row = random.randint(0, self.board_size - 1)
+                col = random.randint(0, self.board_size - 1)
+        elif self.difficulty == 'medium':
+            row, col = self.ai_guess_random()
+            if self.board[row][col] == 'H':
+                row, col = self.ai_guess_nearby(row, col)
+        else:
+            row, col = self.ai_guess_medium()
+        return row, col
