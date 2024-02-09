@@ -187,3 +187,12 @@ class battleshipGame:
                 if self.ai_probabilities[i][j] == max_prob:
                     return i,j
         return self.ai_guess_random()
+    def ai_guess_random(self):
+        """ 
+        makes AI guess randomly
+        returns tuple of row and col index of guess
+        """
+        row = random.randint(0, self.board_size - 1)
+        col = random.randint(0, self.board_size - 1)
+        return row, col
+    
