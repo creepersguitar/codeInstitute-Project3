@@ -28,8 +28,8 @@ class battleshipGame:
             player(str)
             score(int) - The players score
         """
-        self.scores_df = self.scores_df.append({'Player' : player, 'Score' : score}, ignore_index=True)
-
+        new_data = pd.DataFrame({'Player': [player], 'Score': [score]})
+        self.scores_df = pd.concat([self.scores_df, new_data], ignore_index=True)
     def display_leaderboard(self):
         """ 
         Shows the leaderboard with top players and their scores
