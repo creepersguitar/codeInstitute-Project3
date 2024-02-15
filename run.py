@@ -5,24 +5,28 @@ import pandas as pd
 
 class BattleshipGame:
     """A class which holds the code for a battleship game"""
+
     def __init__(self, board_size=8, num_ships=5, player_vs_ai=True, DIFFICULTY='medium'):
         """Initializes the object with specified parameters"""
-        self.board_size = board_size
-        self.num_ships = num_ships
+        self.board_size = max(1, board_size)  # Ensure board size is at least 1
+        self.num_ships = max(1, num_ships)  # Ensure number of ships is at least 1
         self.player_vs_ai = player_vs_ai
-        self.DIFFICULTY = DIFFICULTY
+        self.DIFFICULTY = DIFFICULTY.upper()  # Ensure difficulty is in uppercase
         self.board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
-        self.ships = []
-        self.hits = 0
-        self.scores_df = pd.DataFrame(columns=['Player', 'Score'])
+        self.ships = [] # sets ships to an empty array
+        self.hits = 0 # sets hits to 0
+        self.scores_df = pd.DataFrame(columns=['Player', 'Score']) # makes a dataframe with columns player and score
 
     def update_scores(self, player, score):
         """Updates the dataframe with the scores and player name"""
+        # makes the dataframe into a new variable
         new_data = pd.DataFrame({'Player': [player], 'Score': [score]})
+        # sets the original variable to combine that and new_data
         self.scores_df = pd.concat([self.scores_df, new_data], ignore_index=True)
 
-    def display_leaderboard(self):
+        def display_leaderboard(self):
         """Shows the leaderboard with top players and their scores"""
+        # Tries this block of code
         try:
             leaderboard = self.scores_df.sort_values(by='Score', ascending=False).head(10)
             print("Leaderboard:\n")
