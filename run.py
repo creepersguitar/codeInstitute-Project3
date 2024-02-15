@@ -1,16 +1,16 @@
 """This program makes a battleship game"""
 import time as t
-import pandas as pd
 import random
+import pandas as pd
 
 class BattleshipGame:
     """A class which holds the code for a battleship game"""
-    def __init__(self, board_size=8, num_ships=5, player_vs_ai=True, difficulty='medium'):
+    def __init__(self, board_size=8, num_ships=5, player_vs_ai=True, DIFFICULTY='medium'):
         """Initializes the object with specified parameters"""
         self.board_size = board_size
         self.num_ships = num_ships
         self.player_vs_ai = player_vs_ai
-        self.difficulty = difficulty
+        self.DIFFICULTY = DIFFICULTY
         self.board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
         self.ships = []
         self.hits = 0
@@ -155,14 +155,14 @@ if __name__ == "__main__":
         num_ships = int(input("Enter number of ships (default is 5): ") or 5)
         player_vs_ai = input("Play against AI? (y/n default is yes): ").lower() != "n"
         if player_vs_ai:
-            difficulty = input("""Choose difficulty
+            DIFFICULTY = input("""Choose difficulty
             (easy/medium/hard/cheating/impossible, default is medium):""")
-            difficulty = difficulty.lower() or 'medium'
-            game = BattleshipGame(board_size, num_ships, player_vs_ai, difficulty)
+            DIFFICULTY = DIFFICULTY.lower() or 'medium'
+            game = BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
             game.play()
         else:
-            difficulty = 'medium'
-            game = BattleshipGame(board_size, num_ships, player_vs_ai, difficulty)
+            DIFFICULTY = 'medium'
+            game = BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
             game.load_scores_csv()
             game.play()
     except Exception as e:
