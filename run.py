@@ -87,13 +87,19 @@ class BattleshipGame:
         """Takes input for the player's guess.
         Returns a tuple with the row and column indices from the guess."""
         try:
+            # checks for inputs as an integer
             row = int(input("Enter row number: "))
             col = int(input("Enter col number: "))
+            # if inputs are not returned from function then
             if not self.valid_guess(row, col):
+                # output this and return a function
                 print("Invalid guess. Please try again.")
                 return self.player_guess()
+            # returns the row, col
             return row, col
+            # unless this error happens then
         except ValueError:
+            # prints this
             print("Invalid input! Make sure to enter integers.")
             return self.player_guess()
 
@@ -151,13 +157,35 @@ class BattleshipGame:
 if __name__ == "__main__":
     try:
         print("Welcome to battleships!")
-        board_size = int(input("Enter the board size (default is 8): ") or 8)
-        num_ships = int(input("Enter number of ships (default is 5): ") or 5)
+        while True:
+            try:
+                board_size = int(input("Enter the board size (default is 8): ") or 8)
+                if board_size <= 0:
+                    raise ValueError("Board size must be a positive integer greater than 0.")
+                break
+            except ValueError as ve:
+                print("Invalid input:", ve)
+
+        while True:
+            try:
+                num_ships = int(input("Enter number of ships (default is 5): ") or 5)
+                if num_ships <= 0 or num_ships > board_size:
+                    raise ValueError(f"Number of ships must be a positive integer less than or equal to {board_size}.")
+                break
+            except ValueError as ve:
+                print("Invalid input:", ve)
+
         player_vs_ai = input("Play against AI? (y/n default is yes): ").lower() != "n"
         if player_vs_ai:
-            DIFFICULTY = input("""Choose difficulty
-            (easy/medium/hard/cheating/impossible, default is medium):""")
-            DIFFICULTY = DIFFICULTY.lower() or 'medium'
+            while True:
+                DIFFICULTY = input("""Choose difficulty
+                (easy/medium/hard/cheating/impossible, default is medium):""")
+                DIFFICULTY = DIFFICULTY.lower() or 'medium'
+                if DIFFICULTY in ['easy', 'medium', 'hard', 'cheating', 'impossible']:
+                    break
+                else:
+                    print("Invalid difficulty level. Please choose from the given options.")
+
             game = BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
             game.play()
         else:
