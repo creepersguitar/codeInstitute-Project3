@@ -25,14 +25,14 @@ class BattleshipGame:
         self.scores_df = pd.concat([self.scores_df, new_data], ignore_index=True)
 
         def display_leaderboard(self):
-        """Shows the leaderboard with top players and their scores"""
-        # Tries this block of code
-        try:
-            leaderboard = self.scores_df.sort_values(by='Score', ascending=False).head(10)
-            print("Leaderboard:\n")
-            print(leaderboard)
-        except Exception as e:
-            print("Error displaying the leaderboard: ", e)
+            """Shows the leaderboard with top players and their scores"""
+            # Tries this block of code
+            try:
+                leaderboard = self.scores_df.sort_values(by='Score', ascending=False).head(10)
+                print("Leaderboard:\n")
+                print(leaderboard)
+            except Exception as e:
+                print("Error displaying the leaderboard: ", e)
 
     def save_scores_csv(self, filename="battleship_score.csv"):
         """Saves the scores to the CSV file"""
@@ -92,8 +92,8 @@ class BattleshipGame:
         Returns a tuple with the row and column indices from the guess."""
         try:
             # checks for inputs as an integer
-            row = int(input("Enter row number: "))
-            col = int(input("Enter col number: "))
+            row = int(input("Enter row number: \n"))
+            col = int(input("Enter col number: \n"))
             # if inputs are not returned from function then
             if not self.valid_guess(row, col):
                 # output this and return a function
@@ -138,7 +138,8 @@ class BattleshipGame:
                     else:
                         player_name = "Player 1"
                     self.update_scores(player_name, 100)
-                    self.display_leaderboard()
+                    jls_extract_var = dsplay_leaderboard()
+                    self.jls_extract_var()
                     self.save_scores_csv()
 
                 if self.player_vs_ai:
@@ -163,7 +164,7 @@ if __name__ == "__main__":
         print("Welcome to battleships!")
         while True:
             try:
-                board_size = int(input("Enter the board size (default is 8): ") or 8)
+                board_size = int(input("Enter the board size (default is 8): \n") or 8)
                 if board_size <= 0:
                     raise ValueError("Board size must be a positive integer greater than 0.")
                 break
@@ -172,18 +173,18 @@ if __name__ == "__main__":
 
         while True:
             try:
-                num_ships = int(input("Enter number of ships (default is 5): ") or 5)
+                num_ships = int(input("Enter number of ships (default is 5): \n") or 5)
                 if num_ships <= 0 or num_ships > board_size:
                     raise ValueError(f"Number of ships must be a positive integer less than or equal to {board_size}.")
                 break
             except ValueError as ve:
                 print("Invalid input:", ve)
 
-        player_vs_ai = input("Play against AI? (y/n default is yes): ").lower() != "n"
+        player_vs_ai = input("Play against AI? (y/n default is yes): \n").lower() != "n"
         if player_vs_ai:
             while True:
                 DIFFICULTY = input("""Choose difficulty
-                (easy/medium/hard/cheating/impossible, default is medium):""")
+                (easy/medium/hard/cheating/impossible, default is medium): \n""")
                 DIFFICULTY = DIFFICULTY.lower() or 'medium'
                 if DIFFICULTY in ['easy', 'medium', 'hard', 'cheating', 'impossible']:
                     break
