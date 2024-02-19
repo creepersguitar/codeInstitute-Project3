@@ -177,7 +177,7 @@ class BattleshipGame:
                 self.play()
                 break
             elif play_again in ['no', 'n']:
-                self.exit_game()
+                self.exit_function()
             else:
                 print("Invalid input. Please enter 'yes' or 'no'.")
 
