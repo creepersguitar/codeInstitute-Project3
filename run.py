@@ -57,17 +57,17 @@ class BattleshipGame:
         for _ in range(self.num_ships):
             length = random.randint(2, 5)
             horizontal = random.choice([True, False])
-if horizontal:
-    row = random.randint(0, self.board_size - 1)
-    col = random.randint(0, self.board_size - length)  # Adjusted range
-    for i in range(length):
-        self.board[row][col + i] = 'S'
-else:
-    row = random.randint(0, self.board_size - length)  # Adjusted range
-    col = random.randint(0, self.board_size - 1)
-    for i in range(length):
-        self.board[row + i][col] = 'S'
-        self.ships.append((row, col, length, horizontal))
+            if horizontal:
+                row = random.randint(0, self.board_size - 1)
+                col = random.randint(0, self.board_size - length)  # Adjusted range
+                for i in range(length):
+                    self.board[row][col + i] = 'S'
+            else:
+                row = random.randint(0, self.board_size - length)  # Adjusted range
+                col = random.randint(0, self.board_size - 1)
+                for i in range(length):
+                    self.board[row + i][col] = 'S'
+                    self.ships.append((row, col, length, horizontal))
 
     def print_board(self, show_ships=False):
         """Prints the game board"""
