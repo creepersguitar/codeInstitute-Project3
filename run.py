@@ -24,15 +24,15 @@ class BattleshipGame:
         # sets the original variable to combine that and new_data
         self.scores_df = pd.concat([self.scores_df, new_data], ignore_index=True)
 
-        def display_leaderboard(self):
-            """Shows the leaderboard with top players and their scores"""
-            # Tries this block of code
-            try:
-                leaderboard = self.scores_df.sort_values(by='Score', ascending=False).head(10)
-                print("Leaderboard:\n")
-                print(leaderboard)
-            except Exception as e:
-                print("Error displaying the leaderboard: ", e)
+    def display_leaderboard(self):
+        """Shows the leaderboard with top players and their scores"""
+        # Tries this block of code
+        try:
+            leaderboard = self.scores_df.sort_values(by='Score', ascending=False).head(10)
+            print("Leaderboard:\n")
+            print(leaderboard)
+        except Exception as e:
+            print("Error displaying the leaderboard: ", e)
 
     def save_scores_csv(self, filename="battleship_score.csv"):
         """Saves the scores to the CSV file"""
