@@ -141,6 +141,8 @@ class BattleshipGame:
                     self.update_scores(player_name, 100)
                     self.display_leaderboard()
                     self.save_scores_csv()
+                    # Ask user if they want to play again or exit
+                    self.play_again_prompt()
 
                 if self.player_vs_ai:
                     print("\nAI turn")
@@ -158,6 +160,26 @@ class BattleshipGame:
             print("\n Game interrupted by user!")
         except Exception as e:
             print("Error occurred during gameplay:", e)
+    
+    def exit_function(self):
+        """ Exits out the program. """
+        print("Well goodbye!")
+        sys.exit(0)
+
+    def play_again_prompt(self):
+        """Ask user if they want to play again or exit."""
+        while True:
+            play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+            if play_again in ['yes', 'y']:
+                print("Starting a new game...")
+                # Restart the game
+                self.__init__(self.board_size, self.num_ships, self.player_vs_ai, self.DIFFICULTY)
+                self.play()
+                break
+            elif play_again in ['no', 'n']:
+                self.exit_game()
+            else:
+                print("Invalid input. Please enter 'yes' or 'no'.")
 
 if __name__ == "__main__":
     try:
