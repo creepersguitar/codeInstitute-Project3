@@ -53,7 +53,7 @@ class BattleshipGame:
             print("Error loading scoreboard", e)
 
     def place_ships(self):
-        """Function to randomly place the ships"""
+        """ Helps to place the ships in random spots on board """
         for _ in range(self.num_ships):
             length = random.randint(2, 5)
             horizontal = random.choice([True, False])
@@ -67,7 +67,8 @@ class BattleshipGame:
                 col = random.randint(0, self.board_size - 1)
                 for i in range(length):
                     self.board[row + i][col] = 'S'
-                    self.ships.append((row, col, length, horizontal))
+            self.ships.append((row, col, length, horizontal))
+
 
     def print_board(self, show_ships=False):
         """Prints the game board"""
