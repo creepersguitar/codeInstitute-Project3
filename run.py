@@ -138,7 +138,7 @@ class BattleshipGame:
                     else:
                         player_name = "Player 1"
                     self.update_scores(player_name, 100)
-                    jls_extract_var = dsplay_leaderboard()
+                    jls_extract_var = display_leaderboard()
                     self.jls_extract_var()
                     self.save_scores_csv()
 
