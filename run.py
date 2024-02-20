@@ -1,4 +1,5 @@
 """This program makes a battleship game"""
+import sys
 import time as t
 import random
 import pandas as pd
