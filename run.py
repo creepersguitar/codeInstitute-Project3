@@ -174,25 +174,16 @@ class BattleshipGame:
     def play_again_prompt(self):
         """Ask user if they want to play again or exit."""
         while True:
-            # asks for input
             play_again = input("Do you want to play again? (yes/no): ").strip().lower()
-            # if input is in the list then
             if play_again in ['yes', 'y']:
-                # outputs
                 print("Starting a new game...")
                 # Restart the game
                 self.__init__(self.board_size, self.num_ships, self.player_vs_ai, self.DIFFICULTY)
-                # runs play function
                 self.play()
-                # breaks code
                 break
-            # else if input is in other list then
             elif play_again in ['no', 'n']:
-                # calls function
                 self.exit_function()
-            # otherwise
             else:
-                # output invalid input
                 print("Invalid input. Please enter 'yes' or 'no'.")
 
 if __name__ == "__main__":
