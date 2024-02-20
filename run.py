@@ -1,4 +1,5 @@
 """This program makes a battleship game"""
+import sys as s
 import time as t
 import random
 import pandas as pd
@@ -170,6 +171,7 @@ class BattleshipGame:
     def exit_function(self):
         """ Exits out the program. """
         print("Well goodbye!")
+        s.exit(0)
 
     def play_again_prompt(self):
         """Ask user if they want to play again or exit."""
