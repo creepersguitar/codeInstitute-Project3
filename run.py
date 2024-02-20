@@ -148,11 +148,17 @@ class BattleshipGame:
                 if self.player_vs_ai:
                     print("\nAI turn")
                     ai_guess_row, ai_guess_col = self.ai_guess()
+                    # f string to tell user what ai has guessed
                     print(f"AI Guesses: {ai_guess_row}, {ai_guess_col}")
                     if self.board[ai_guess_row][ai_guess_col] == 'S':
+                        # output for user
                         print("AI has hit your ship!")
+                        # makes guess turn to an X
                         self.board[ai_guess_row][ai_guess_col] = 'X'
+                        #increments hits variable
                         self.hits += 1
+                        # runs function
+                        self.play_again_prompt()
                     else:
                         print("AI has missed! ")
                         t.sleep(1)
