@@ -1,4 +1,4 @@
-#Battlefleets
+#Battle-fleets
 
 
 ## Contents
@@ -18,6 +18,9 @@
 
 # Testing
 
+## browser testing
+
+## manual testing
 
 # UX
 
@@ -26,4 +29,4 @@
 - code institutes github account so i could use their [template](https://github.com/Code-Institute-Org/p3-template)
 # Credits
 - credit to the code institute team who made the template which i am using
-- Spencer barriball for his input and advice
+- Spencer barriball for his input and advice across 3 mentor calls

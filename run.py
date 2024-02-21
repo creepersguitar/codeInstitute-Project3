@@ -145,33 +145,33 @@ class BattleshipGame:
                     # Ask user if they want to play again or exit
                     self.play_again_prompt()
 
-                if self.player_vs_ai:
-                    print("\nAI turn")
+                if self.player_vs_ai: # if its player vs ai then
+                    print("\nAI turn") # output
                     ai_guess_row, ai_guess_col = self.ai_guess()
                     # f string to tell user what ai has guessed
                     print(f"AI Guesses: {ai_guess_row}, {ai_guess_col}")
                     if self.board[ai_guess_row][ai_guess_col] == 'S':
                         # output for user
                         print("AI has hit your ship!")
-                        # runs function
-                        self.play_again_prompt()
                         # makes guess turn to an X
                         self.board[ai_guess_row][ai_guess_col] = 'X'
                         #increments hits variable
                         self.hits += 1
-                    else:
-                        print("AI has missed! ")
-                        t.sleep(1)
-                        print("You may have another go!")
-        except KeyboardInterrupt:
-            print("\n Game interrupted by user!")
-        except Exception as e:
-            print("Error occurred during gameplay:", e)
+                        # runs function
+                        self.play_again_prompt()
+                    else: # otherwise
+                        print("AI has missed! ") # output
+                        t.sleep(1) # pauses program to give user chance to read
+                        print("You may have another go!") # output
+        except KeyboardInterrupt: # handles user error
+            print("\n Game interrupted by user!") # output
+        except Exception as e: # handles error
+            print("Error occurred during gameplay:", e) # shows error message
     
     def exit_function(self):
         """ Exits out the program. """
-        print("Well goodbye!")
-        sys.exit()
+        print("Well goodbye!") # output for user
+        sys.exit()  # exits program
 
     def play_again_prompt(self):
         """Ask user if they want to play again or exit."""
@@ -189,43 +189,4 @@ class BattleshipGame:
                 print("Invalid input. Please enter 'yes' or 'no'.")
 
 if __name__ == "__main__":
-    try:
-        print("Welcome to battleships!")
-        while True:
-            try:
-                board_size = int(input("Enter the board size (default is 8): \n") or 8)
-                if board_size <= 0:
-                    raise ValueError("Board size must be a positive integer greater than 0.")
-                break
-            except ValueError as ve:
-                print("Invalid input:", ve)
-
-        while True:
-            try:
-                num_ships = int(input("Enter number of ships (default is 5): \n") or 5)
-                if num_ships <= 0 or num_ships > board_size:
-                    raise ValueError(f"Number of ships must be a positive integer less than or equal to {board_size}.")
-                break
-            except ValueError as ve:
-                print("Invalid input:", ve)
-
-        player_vs_ai = input("Play against AI? (y/n default is yes): \n").lower() != "n"
-        if player_vs_ai:
-            while True:
-                DIFFICULTY = input("""Choose difficulty
-                (easy/medium/hard/cheating/impossible, default is medium): \n""")
-                DIFFICULTY = DIFFICULTY.lower() or 'medium'
-                if DIFFICULTY in ['easy', 'medium', 'hard', 'cheating', 'impossible']:
-                    break
-                else:
-                    print("Invalid difficulty level. Please choose from the given options.")
-
-            game = BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
-            game.play()
-        else:
-            DIFFICULTY = 'medium'
-            game = BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
-            game.load_scores_csv()
-            game.play()
-    except Exception as e:
-        print("Unexpected error occurred:", e)
+    main()
