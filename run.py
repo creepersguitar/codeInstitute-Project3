@@ -187,6 +187,26 @@ class BattleshipGame:
                 self.exit_function()
             else:
                 print("Invalid input. Please enter 'yes' or 'no'.")
-
+    def welcome_prompt():
+        """ Welcome message and allows inputs for board size and number of ships"""
+        print("Welcome to battleships!")
+        while True:
+            try:
+                board_size = int(input("Enter the board size (default is 8): \n") or 8)
+                if board_size <=0:
+                    raise ValueError("Board size must be a positive intiger greater than 0")
+                break
+            except ValueError as ve:
+                print("invalid input! ", ve)
+        while True:
+            try:
+                num_ships = int(input("Enter number of ships (default is 5): \n") or 5)
+                if num_ships <= 0 or num_ships > board_size:
+                    raise ValueError(f"Number of ships must be a positive integer less than or equal to {board_size}.")
+                break
+            except ValueError as ve:
+                print("Invalid input! ", ve)
+        return board_size, num_ships
+    
 if __name__ == "__main__":
     main()
