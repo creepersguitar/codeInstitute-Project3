@@ -218,6 +218,22 @@ class BattleshipGame:
         else:
             print("Invalid level chosen try again!")
         return DIFFICULTY
-    
+    def set_up():
+        """ Sets up the game """
+        board_size, num_ships = welcome_prompt()
+        player_vs_ai = input("Would you like to play against the AI? (default is yes) \n").lower() !="n"
+        if player_vs_ai:
+            DIFFICULTY = ai_difficulty_prompt()
+        else:
+            DIFFICULTY = 'medium'
+        return BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
+    def main():
+        """ starts game and controls flow of it """
+        try:
+            game = set_up()
+            game.play()
+        except Exception as e:
+            print("Unexpected error", e)
+
 if __name__ == "__main__":
     main()
