@@ -207,6 +207,17 @@ class BattleshipGame:
             except ValueError as ve:
                 print("Invalid input! ", ve)
         return board_size, num_ships
+    def ai_difficulty_prompt():
+        """ Helps user select AI difficulty """
+        while True:
+            DIFFICULTY = input("""Choose difficulty
+        (easy/medium/hard/cheating/impossible, default is medium): \n""")
+        DIFFICULTY = DIFFICULTY.lower() or 'medium'
+        if DIFFICULTY in ['easy','medium','hard','cheating','impossible']:
+            break
+        else:
+            print("Invalid level chosen try again!")
+        return DIFFICULTY
     
 if __name__ == "__main__":
     main()
