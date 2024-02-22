@@ -227,13 +227,14 @@ class BattleshipGame:
         else:
             DIFFICULTY = 'medium'
         return BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
-    def main():
-        """ starts game and controls flow of it """
-        try:
-            game = set_up()
-            game.play()
-        except Exception as e:
-            print("Unexpected error", e)
+
+def main():
+    """ starts game and controls flow of it """
+    try:
+        game = set_up()
+        game.play()
+    except Exception as e:
+        print("Unexpected error", e)
 
 if __name__ == "__main__":
-    self.main()
+    main()
