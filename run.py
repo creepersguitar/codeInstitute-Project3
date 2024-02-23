@@ -191,7 +191,7 @@ class BattleshipGame:
 def welcome_prompt():
     """ Welcome message and allows inputs for board size and number of ships"""
     print("Welcome to battleships!")
-    num_ships = 0
+    num_ships = None
     while True:
         try:
             board_size = int(input("Enter the board size (default is 8): \n") or 8)
