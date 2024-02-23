@@ -238,6 +238,6 @@ class BattleshipGame:
 
 if __name__ == "__main__":
     try:
-        main()
+        self.main()
     except Exception as e:
         print("unexpected Error! ", e)

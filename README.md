@@ -1,5 +1,6 @@
 #Battle-fleets
 
+This is a fun battleship game designed and targetted for anyone who wants to have some fun and get a friendly competition going between peers.
 
 ## Contents
 1. Design(#design)
