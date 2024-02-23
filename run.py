@@ -187,57 +187,60 @@ class BattleshipGame:
                 self.exit_function()
             else:
                 print("Invalid input. Please enter 'yes' or 'no'.")
-    def welcome_prompt():
-        """ Welcome message and allows inputs for board size and number of ships"""
-        print("Welcome to battleships!")
-        while True:
-            try:
-                board_size = int(input("Enter the board size (default is 8): \n") or 8)
-                if board_size <=0:
-                    raise ValueError("Board size must be a positive intiger greater than 0")
-                break
-            except ValueError as ve:
-                print("invalid input! ", ve)
-        while True:
-            try:
-                num_ships = int(input("Enter number of ships (default is 5): \n") or 5)
-                if num_ships <= 0 or num_ships > board_size:
-                    raise ValueError(f"Number of ships must be a positive integer less than or equal to {board_size}.")
-                break
-            except ValueError as ve:
-                print("Invalid input! ", ve)
-        return board_size, num_ships
-    def ai_difficulty_prompt():
-        """Prompt for AI difficulty."""
-        while True:
-            DIFFICULTY = input("""Choose difficulty
-            (easy/medium/hard/cheating/impossible, default is medium): \n""")
-            DIFFICULTY = DIFFICULTY.lower() or 'medium'
-            if DIFFICULTY in ['easy', 'medium', 'hard', 'cheating', 'impossible']:
-                break
-            else:
-                print("Invalid difficulty level. Please choose from the given options.")
-        return DIFFICULTY
-    def set_up():
-        """ Sets up the game """
-        board_size, num_ships = welcome_prompt()
-        player_vs_ai = input("Would you like to play against the AI? (default is yes) \n").lower() !="n"
-        if player_vs_ai:
-            DIFFICULTY = ai_difficulty_prompt()
-        else:
-            DIFFICULTY = 'medium'
-        return BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
 
-    def main():
-        """ starts game and controls flow of it """
+def welcome_prompt():
+    """ Welcome message and allows inputs for board size and number of ships"""
+    print("Welcome to battleships!")
+    while True:
         try:
-            game = set_up()
-            game.play()
-        except Exception as e:
-            print("Unexpected error", e)
+            board_size = int(input("Enter the board size (default is 8): \n") or 8)
+            if board_size <=0:
+                raise ValueError("Board size must be a positive intiger greater than 0")
+            break
+        except ValueError as ve:
+            print("invalid input! ", ve)
+    while True:
+        try:
+            num_ships = int(input("Enter number of ships (default is 5): \n") or 5)
+            if num_ships <= 0 or num_ships > board_size:
+                raise ValueError(f"Number of ships must be a positive integer less than or equal to {board_size}.")
+            break
+        except ValueError as ve:
+            print("Invalid input! ", ve)
+    return board_size, num_ships
+
+def ai_difficulty_prompt():
+    """Prompt for AI difficulty."""
+    while True:
+        DIFFICULTY = input("""Choose difficulty
+        (easy/medium/hard/cheating/impossible, default is medium): \n""")
+        DIFFICULTY = DIFFICULTY.lower() or 'medium'
+        if DIFFICULTY in ['easy', 'medium', 'hard', 'cheating', 'impossible']:
+            break
+        else:
+            print("Invalid difficulty level. Please choose from the given options.")
+    return DIFFICULTY
+
+def set_up():
+    """ Sets up the game """
+    board_size, num_ships = welcome_prompt()
+    player_vs_ai = input("Would you like to play against the AI? (default is yes) \n").lower() !="n"
+    if player_vs_ai:
+        DIFFICULTY = ai_difficulty_prompt()
+    else:
+        DIFFICULTY = 'medium'
+    return BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
+
+def main():
+    """ starts game and controls flow of it """
+    try:
+        game = set_up()
+        game.play()
+    except Exception as e:
+        print("Unexpected error", e)
 
 if __name__ == "__main__":
     try:
-        self.main()
+        main()
     except Exception as e:
         print("unexpected Error! ", e)
