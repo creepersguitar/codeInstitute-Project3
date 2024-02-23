@@ -194,7 +194,7 @@ def welcome_prompt():
     while True:
         try:
             board_size = int(input("Enter the board size (default is 8): \n") or 8)
-            if board_size <=0:
+            if num_ships <= 0 or num_ships > board_size:
                 raise ValueError("Board size must be a positive intiger greater than 0")
             break
         except ValueError as ve:
