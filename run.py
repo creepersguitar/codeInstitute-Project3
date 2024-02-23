@@ -10,7 +10,7 @@ class BattleshipGame:
     def __init__(self, board_size=8, num_ships=5, player_vs_ai=True, DIFFICULTY='medium'):
         """Initializes the object with specified parameters"""
         self.board_size = max(1, board_size)  # Ensure board size is at least 1
-        self.num_ships = max(1, num_ships)  # Ensure number of ships is at least 1
+        self.num_ships = max(1, min(num_ships, board_size))
         self.player_vs_ai = player_vs_ai
         self.DIFFICULTY = DIFFICULTY.upper()  # Ensure difficulty is in uppercase
         self.board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
