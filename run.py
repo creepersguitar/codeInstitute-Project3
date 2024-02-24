@@ -123,7 +123,7 @@ class BattleshipGame:
     def play(self):
         """Starts the game and controls the flow of gameplay"""
         try:
-            self.place_ships()  # Corrected line
+            self.place_ships()
             while self.hits < self.num_ships:
                 print("\nPlayers Turn" if self.player_vs_ai else "\nPlayer 1 go")
                 self.print_board()
@@ -175,6 +175,7 @@ class BattleshipGame:
                         self.play_again_prompt()                    
                     else: # otherwise
                         print("You may have another go!") # output
+                        self.play()
         except KeyboardInterrupt: # handles user error
             print("\n Game interrupted by user!") # output
         except Exception as e: # handles error
