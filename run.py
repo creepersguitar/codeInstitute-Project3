@@ -138,7 +138,7 @@ class BattleshipGame:
                 else:
                     print("phew you missed!")
                     self.board[guess_row][guess_col] = 'X'
-                if self.hits == self.num_ships:
+                if self.hits == 2 * self.num_ships:
                     print("Congrats! you have sunk all my battleships!")
                     if self.player_vs_ai:
                         player_name = input("Please enter your name now! \n")
