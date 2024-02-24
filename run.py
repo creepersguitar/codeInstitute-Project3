@@ -188,31 +188,29 @@ class BattleshipGame:
             else:
                 print("Invalid input. Please enter 'yes' or 'no'.")
 
-    def welcome_prompt():
-        """ Welcome message and allows inputs for board size and number of ships"""
-        print("Welcome to battleships!")
-        num_ships_input = None  # Initialize num_ships_input to None
-        while True:
-            try:
-                board_size = int(input("Enter the board size (default is 8): \n") or 8)
-                if board_size <= 0:
-                    raise ValueError("Board size must be a positive integer greater than 0")
-                break
-            except ValueError as ve:
-                print("Invalid input! ", ve)
-
-        num_ships_input = input("Enter number of ships (default is 5): \n")
-        if num_ships_input:  # Check if user input anything
-            try:
-                num_ships = int(num_ships_input)
-                if num_ships <= 0 or num_ships > board_size:
-                    raise ValueError(f"Number of ships must be a positive integer less than or equal to {board_size}.")
-            except ValueError as ve:
-                print("Invalid input! ", ve)
-        else:  # Handle the case where user input nothing
-            num_ships = 5
-
-        return board_size, num_ships
+def welcome_prompt():
+    """ Welcome message and allows inputs for board size and number of ships"""
+    print("Welcome to battleships!")
+    num_ships_input = None  # Initialize num_ships_input to None
+    while True:
+        try:
+            board_size = int(input("Enter the board size (default is 8): \n") or 8)
+            if board_size <= 0:
+                raise ValueError("Board size must be a positive integer greater than 0")
+            break
+        except ValueError as ve:
+            print("Invalid input! ", ve)
+    num_ships_input = input("Enter number of ships (default is 5): \n")
+    if num_ships_input:  # Check if user input anything
+        try:
+            num_ships = int(num_ships_input)
+            if num_ships <= 0 or num_ships > board_size:
+                raise ValueError(f"Number of ships must be a positive integer less than or equal to {board_size}.")
+        except ValueError as ve:
+            print("Invalid input! ", ve)
+    else:  # Handle the case where user input nothing
+        num_ships = 5
+    return board_size, num_ships
 
 
 def ai_difficulty_prompt():
