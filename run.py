@@ -64,11 +64,12 @@ class BattleshipGame:
                 for i in range(length):
                     self.board[row][col + i] = 'S'
             else:
-                row = random.randint(0, self.board_size - length)  # Adjusted range
+                row = random.randint(0, self.board_size - length)  
                 col = random.randint(0, self.board_size - 1)
                 for i in range(length):
                     self.board[row + i][col] = 'S'
             self.ships.append((row, col, length, horizontal))
+
 
 
     def print_board(self, show_ships=False):
