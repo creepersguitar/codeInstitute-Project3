@@ -76,15 +76,16 @@ class BattleshipGame:
                 self.place_ships()
 
 
-    def print_board(self, board, show_ships=False):
+    def print_board(self, show_ships=False):
         """Prints the game board"""
         print("   " + " ".join(str(i) for i in range(self.board_size)))
         for i in range(self.board_size):
             if not show_ships:
-                row = ' '.join(board[i])
+                row = ' '.join(self.board[i])
             else:
-                row = ' '.join(['S' if cell == 'S' else 'O' for cell in board[i]])
+                row = ' '.join(['S' if cell == 'S' else 'O' for cell in self.board[i]])
             print(f"{i} | {row}")
+
 
     def valid_guess(self, row, col):
         """Checks for a valid guess (within boundaries and not already guessed)"""
