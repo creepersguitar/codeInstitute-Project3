@@ -128,24 +128,27 @@ class BattleshipGame:
     def play(self):
         """Starts the game and controls the flow of gameplay"""
         try:
-            self.player_ships = self.place_ships(self.player_board)
-            self.ai_ships = self.place_ships(self.ai_board)
-            while self.player_hits < self.num_ships and self.ai_hits < self.num_ships:
+            self.place_ships()  # Corrected line
+            while self.hits < self.num_ships:
                 print("\nPlayers Turn" if self.player_vs_ai else "\nPlayer 1 go")
-                self.print_board(self.player_board)
-                guess_row, guess_col = self.player_guess()
-                if (guess_row, guess_col) in self.ai_ships:
+                self.print_board()
+                if self.player_vs_ai:
+                    guess_row, guess_col = self.player_guess()
+                else:
+                    guess_row, guess_col = self.player_guess()
+                if self.board[guess_row][guess_col] == 'S':
                     print("Aye ye hit me battleship!")
-                    self.ai_board[guess_row][guess_col] = 'X'
-                    self.ai_ships.remove((guess_row, guess_col))
-                    self.player_hits += 1
+                    self.board[guess_row][guess_col] = 'X'
+                    self.hits += 1
                 else:
                     print("phew you missed!")
-                    self.ai_board[guess_row][guess_col] = 'X'
-
-                if self.player_hits == self.num_ships:
-                    print("Congrats! you have sunk all AI's battleships!")
-                    player_name = input("Please enter your name now! \n") if self.player_vs_ai else "Player 1"
+                    self.board[guess_row][guess_col] = 'X'
+                if self.hits == self.num_ships:
+                    print("Congrats! you have sunk all my battleships!")
+                    if self.player_vs_ai:
+                        player_name = input("Please enter your name now! \n")
+                    else:
+                        player_name = "Player 1"
                     self.update_scores(player_name, 100)
                     self.display_leaderboard()
                     self.save_scores_csv()
@@ -157,13 +160,13 @@ class BattleshipGame:
                     ai_guess_row, ai_guess_col = self.ai_guess()
                     # f string to tell user what ai has guessed
                     print(f"AI Guesses: {ai_guess_row}, {ai_guess_col}")
-                    if self.player_board[ai_guess_row][ai_guess_col] == 'S':
+                    if self.board[ai_guess_row][ai_guess_col] == 'S':
                         # output for user
                         print("AI has hit your ship!")
                         # makes guess turn to an X
-                        self.player_board[ai_guess_row][ai_guess_col] = 'X'
+                        self.board[ai_guess_row][ai_guess_col] = 'X'
                         #increments hits variable
-                        self.ai_hits += 1
+                        self.hits += 1
                         # runs function
                         self.play_again_prompt()
                     else: # otherwise
@@ -174,6 +177,7 @@ class BattleshipGame:
             print("\n Game interrupted by user!") # output
         except Exception as e: # handles error
             print("Error occurred during gameplay:", e) # shows error message
+
     
     def exit_function(self):
         """ Exits out the program. """
