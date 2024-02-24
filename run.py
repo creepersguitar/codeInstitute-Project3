@@ -56,25 +56,31 @@ class BattleshipGame:
         except Exception as e:
             print("Error loading scoreboard", e)
 
-    def place_ships(self, board):
-        """Helps to place the ships in random spots on board"""
-        ships = []  # Store ship positions
+    def place_ships(self):
+        """Places the ships randomly on the board."""
         for _ in range(self.num_ships):
             length = random.randint(2, 5)
             horizontal = random.choice([True, False])
-            if horizontal:
-                row = random.randint(0, self.board_size - 1)
-                col = random.randint(0, self.board_size - length)  # Adjusted range
-                for i in range(length):
-                    board[row][col + i] = 'S'
-                    ships.append((row, col + i))
-            else:
-                row = random.randint(0, self.board_size - length)  # Adjusted range
-                col = random.randint(0, self.board_size - 1)
-                for i in range(length):
-                    board[row + i][col] = 'S'
-                    ships.append((row + i, col))
-        return ships
+            ship_placed = False
+
+            while not ship_placed:
+                if horizontal:
+                    row = random.randint(0, self.board_size - 1)
+                    col = random.randint(0, self.board_size - length)
+                    if all(self.board[row][c] == 'o' for c in range(col, col + length)):
+                        for i in range(length):
+                            self.board[row][col + i] = 'S'
+                        ship_placed = True
+                else:
+                    row = random.randint(0, self.board_size - length)
+                    col = random.randint(0, self.board_size - 1)
+                    if all(self.board[r][col] == 'o' for r in range(row, row + length)):
+                        for i in range(length):
+                            self.board[row + i][col] = 'S'
+                        ship_placed = True
+
+            self.ships.append((row, col, length, horizontal))
+
 
     def print_board(self, board, show_ships=False):
         """Prints the game board"""
