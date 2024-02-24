@@ -13,13 +13,11 @@ class BattleshipGame:
         self.num_ships = max(1, min(num_ships, board_size))
         self.player_vs_ai = player_vs_ai
         self.DIFFICULTY = DIFFICULTY.upper()  # Ensure difficulty is in uppercase
-        self.player_board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
-        self.ai_board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
-        self.player_ships = []  # Stores the positions of player's ships
-        self.ai_ships = []  # Stores the positions of AI's ships
-        self.player_hits = 0
-        self.ai_hits = 0
-        self.scores_df = pd.DataFrame(columns=['Player', 'Score']) # makes a dataframe with columns player and score
+        self.board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]  # Initialize the board attribute
+        self.ships = []  # sets ships to an empty array
+        self.hits = 0  # sets hits to 0
+        self.scores_df = pd.DataFrame(columns=['Player', 'Score'])  # makes a dataframe with columns player and score
+
 
     def update_scores(self, player, score):
         """Updates the dataframe with the scores and player name"""
