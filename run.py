@@ -166,7 +166,6 @@ class BattleshipGame:
                         self.play_again_prompt()
                     else: # otherwise
                         print("AI has missed! ") # output
-                        t.sleep(1) # pauses program to give user chance to read
                         print("You may have another go!") # output
         except KeyboardInterrupt: # handles user error
             print("\n Game interrupted by user!") # output
