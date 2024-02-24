@@ -162,8 +162,17 @@ class BattleshipGame:
                         self.board[ai_guess_row][ai_guess_col] = 'X'
                         #increments hits variable
                         self.hits += 1
-                        # runs function
-                        self.play_again_prompt()
+                    if self.hits == 2 * self.num_ships:
+                        print("Congrats! you have sunk all my battleships!")
+                        if self.player_vs_ai:
+                            player_name = input("Please enter your name now! \n")
+                        else:
+                            player_name = "Player 1"
+                        self.update_scores(player_name, 100)
+                        self.display_leaderboard()
+                        self.save_scores_csv()
+                        # Ask user if they want to play again or exit
+                        self.play_again_prompt()                    
                     else: # otherwise
                         print("AI has missed! ") # output
                         print("You may have another go!") # output
