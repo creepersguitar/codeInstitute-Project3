@@ -1,4 +1,4 @@
-"""This program makes a battleship game"""
+""" This is code for a battleships game """
 import sys
 import time as t
 import random
@@ -13,9 +13,12 @@ class BattleshipGame:
         self.num_ships = max(1, min(num_ships, board_size))
         self.player_vs_ai = player_vs_ai
         self.DIFFICULTY = DIFFICULTY.upper()  # Ensure difficulty is in uppercase
-        self.board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
-        self.ships = [] # sets ships to an empty array
-        self.hits = 0 # sets hits to 0
+        self.player_board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
+        self.ai_board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
+        self.player_ships = []  # Stores the positions of player's ships
+        self.ai_ships = []  # Stores the positions of AI's ships
+        self.player_hits = 0
+        self.ai_hits = 0
         self.scores_df = pd.DataFrame(columns=['Player', 'Score']) # makes a dataframe with columns player and score
 
     def update_scores(self, player, score):
@@ -53,8 +56,9 @@ class BattleshipGame:
         except Exception as e:
             print("Error loading scoreboard", e)
 
-    def place_ships(self):
-        """ Helps to place the ships in random spots on board """
+    def place_ships(self, board):
+        """Helps to place the ships in random spots on board"""
+        ships = []  # Store ship positions
         for _ in range(self.num_ships):
             length = random.randint(2, 5)
             horizontal = random.choice([True, False])
@@ -62,32 +66,31 @@ class BattleshipGame:
                 row = random.randint(0, self.board_size - 1)
                 col = random.randint(0, self.board_size - length)  # Adjusted range
                 for i in range(length):
-                    self.board[row][col + i] = 'S'
+                    board[row][col + i] = 'S'
+                    ships.append((row, col + i))
             else:
-                row = random.randint(0, self.board_size - length)  
+                row = random.randint(0, self.board_size - length)  # Adjusted range
                 col = random.randint(0, self.board_size - 1)
                 for i in range(length):
-                    self.board[row + i][col] = 'S'
-            self.ships.append((row, col, length, horizontal))
+                    board[row + i][col] = 'S'
+                    ships.append((row + i, col))
+        return ships
 
-
-
-    def print_board(self, show_ships=False):
+    def print_board(self, board, show_ships=False):
         """Prints the game board"""
         print("   " + " ".join(str(i) for i in range(self.board_size)))
         for i in range(self.board_size):
             if not show_ships:
-                row = ' '.join(self.board[i])
+                row = ' '.join(board[i])
             else:
-                row = ' '.join(['S' if cell == 'S' else 'O' for cell in self.board[i]])
+                row = ' '.join(['S' if cell == 'S' else 'O' for cell in board[i]])
             print(f"{i} | {row}")
 
     def valid_guess(self, row, col):
         """Checks for a valid guess (within boundaries and not already guessed)"""
         return (
             0 <= row < self.board_size and
-            0 <= col < self.board_size and
-            self.board[row][col] != 'X'
+            0 <= col < self.board_size
         )
 
     def player_guess(self):
@@ -119,27 +122,24 @@ class BattleshipGame:
     def play(self):
         """Starts the game and controls the flow of gameplay"""
         try:
-            self.place_ships()
-            while self.hits < self.num_ships:
+            self.player_ships = self.place_ships(self.player_board)
+            self.ai_ships = self.place_ships(self.ai_board)
+            while self.player_hits < self.num_ships and self.ai_hits < self.num_ships:
                 print("\nPlayers Turn" if self.player_vs_ai else "\nPlayer 1 go")
-                self.print_board()
-                if self.player_vs_ai:
-                    guess_row, guess_col = self.player_guess()
-                else:
-                    guess_row, guess_col = self.player_guess()
-                if self.board[guess_row][guess_col] == 'S':
+                self.print_board(self.player_board)
+                guess_row, guess_col = self.player_guess()
+                if (guess_row, guess_col) in self.ai_ships:
                     print("Aye ye hit me battleship!")
-                    self.board[guess_row][guess_col] = 'X'
-                    self.hits += 1
+                    self.ai_board[guess_row][guess_col] = 'X'
+                    self.ai_ships.remove((guess_row, guess_col))
+                    self.player_hits += 1
                 else:
                     print("phew you missed!")
-                    self.board[guess_row][guess_col] = 'X'
-                if self.hits == self.num_ships:
-                    print("Congrats! you have sunk all my battleships!")
-                    if self.player_vs_ai:
-                        player_name = input("Please enter your name now! \n")
-                    else:
-                        player_name = "Player 1"
+                    self.ai_board[guess_row][guess_col] = 'X'
+
+                if self.player_hits == self.num_ships:
+                    print("Congrats! you have sunk all AI's battleships!")
+                    player_name = input("Please enter your name now! \n") if self.player_vs_ai else "Player 1"
                     self.update_scores(player_name, 100)
                     self.display_leaderboard()
                     self.save_scores_csv()
@@ -151,13 +151,13 @@ class BattleshipGame:
                     ai_guess_row, ai_guess_col = self.ai_guess()
                     # f string to tell user what ai has guessed
                     print(f"AI Guesses: {ai_guess_row}, {ai_guess_col}")
-                    if self.board[ai_guess_row][ai_guess_col] == 'S':
+                    if self.player_board[ai_guess_row][ai_guess_col] == 'S':
                         # output for user
                         print("AI has hit your ship!")
                         # makes guess turn to an X
-                        self.board[ai_guess_row][ai_guess_col] = 'X'
+                        self.player_board[ai_guess_row][ai_guess_col] = 'X'
                         #increments hits variable
-                        self.hits += 1
+                        self.ai_hits += 1
                         # runs function
                         self.play_again_prompt()
                     else: # otherwise
