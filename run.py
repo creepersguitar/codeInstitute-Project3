@@ -119,7 +119,32 @@ class BattleshipGame:
         row = random.randint(0, self.board_size - 1)
         col = random.randint(0, self.board_size - 1)
         return row, col
+    def probability_based(self):
+            """ 
+            Generates AI guess using probability
+            returns a tuple with row n col indicies
+            """
+            max_prob = max(max(row) for row in self.ai_probabilities)
+            for i in range (self.board_size):
+                for j in range(self.board_size):
+                    if self.ai_probabilities[i][j] == max_prob:
+                        return i,j
+            return self.ai_guess_random()
 
+    def target_tracking(self):
+        """ 
+        Generates AI guess using tracking
+        returning tuple of row and col indicies
+        """
+        for i in range(self.board_size):
+            for j in range(self.board_size):
+                if self.board[i][j] == 'H':
+                    for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                        x, y = i + dx, j + dy
+                        if 0 <= x < self.board_size and 0 <= y < self.board_size:
+                            if self.board[x][y] == 'O':
+                                return x,y
+        return self.ai_guess_random()
     def play(self):
         """Starts the game and controls the flow of gameplay"""
         try:
