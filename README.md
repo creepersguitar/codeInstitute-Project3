@@ -30,6 +30,7 @@ View the app [here](https://ciproject3-1a2d8b8a54cb.herokuapp.com/)
 - Advanced AI: Implement more sophisticated AI algorithms to provide a more challenging opponent.
 - Leaderboard: Introduce a global leaderboard to track high scores and player rankings.
 - Customizable Themes: Allow users to customize the game's appearance with different themes and backgrounds.
+- Finish off the player vs player
 
 
 ## Testing
@@ -45,3 +46,5 @@ Battle-fleets has been tested extensively on various web browsers including Chro
 ### Manual Testing:
 - Checked for correct ship placement and alignment.
 - checked for the CSV file being updated every time a game is completed
+- Verified AI behavior and difficulty levels.
+- Ensured proper handling of user input and error messages.
