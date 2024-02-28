@@ -31,3 +31,13 @@ View the app [here](https://ciproject3-1a2d8b8a54cb.herokuapp.com/)
 - Leaderboard: Introduce a global leaderboard to track high scores and player rankings.
 - Customizable Themes: Allow users to customize the game's appearance with different themes and backgrounds.
 
+## Testing
+### Browser Testing:
+Battle-fleets has been tested extensively on various web browsers including Chrome, Firefox, Safari, and Edge to ensure compatibility and optimal performance across different platforms.
+| Browser | Layout + Functionality |
+| Chrome  |            ✔           |
+| Firefox |            ✔           |
+| Safari  |            ✔           |
+| Ecosia  |            ✔           |
+| Edge    |            ✔           |
+
