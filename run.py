@@ -155,10 +155,10 @@ class BattleshipGame:
                 if self.board[i][j] == 'H':
                     for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
                         x, y = i + dx, j + dy
-                        if 0 <= x < self.board_size
-                        and 0 <= y < self.board_size:
-                            if self.board[x][y] == 'O':
-                                return x, y
+                        if 0 <= x < self.board_size:
+                            if 0 <= y < self.board_size:
+                                if self.board[x][y] == 'O':
+                                    return x, y
         return self.ai_guess_random()
 
     def play(self):
@@ -246,8 +246,8 @@ def welcome_prompt():
     while True:
         try:
             board_size = int(input("Enter the board size (default is 8): \n") or 8)
-            if board_size <= 0:
-                raise ValueError("Board size must be a positive integer greater than 0")
+            if board_size <= 0 or board_size > 12:
+                raise ValueError("Board size must be a positive integer greater than 0 and less than 12")
             break
         except ValueError as ve:
             print("Invalid input! ", ve)
