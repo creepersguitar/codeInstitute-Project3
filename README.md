@@ -9,3 +9,8 @@ Battle-fleets is a classic battleship game designed to provide users with an eng
 3. [Testing](#testing)
 4. [User Experience (UX)](#user-experience-ux)
 5. [Sources and Credits](#sources-and-credits)
+
+## Design
+- The design of Battle-fleets focuses on simplicity, intuitiveness, and visual appeal. 
+- The game interface is designed to be easy to navigate, with clear instructions and feedback to guide the player through each step of the game.
+
