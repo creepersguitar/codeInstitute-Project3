@@ -4,33 +4,43 @@ import time as t
 import random
 import pandas as pd
 
+
 class BattleshipGame:
     """A class which holds the code for a battleship game"""
 
-    def __init__(self, board_size=8, num_ships=5, player_vs_ai=True, DIFFICULTY='medium'):
+    def __init__(
+        self,
+        board_size=8,
+        num_ships=5,
+        player_vs_ai=True,
+            DIFFICULTY='medium'):
         """Initializes the object with specified parameters"""
         self.board_size = max(1, board_size)  # Ensure board size is at least 1
         self.num_ships = max(1, min(num_ships, board_size))
         self.player_vs_ai = player_vs_ai
-        self.DIFFICULTY = DIFFICULTY.upper()  # Ensure difficulty is in uppercase
-        self.board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]  # Initialize the board attribute
+        # Ensure difficulty is in uppercase
+        self.DIFFICULTY = DIFFICULTY.upper()
+        self.board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
+        # Initialize the board attribute
         self.ships = []  # sets ships to an empty array
         self.hits = 0  # sets hits to 0
-        self.scores_df = pd.DataFrame(columns=['Player', 'Score'])  # makes a dataframe with columns player and score
-
+        self.scores_df = pd.DataFrame(columns=['Player', 'Score'])
+        # makes a dataframe with columns player and score
 
     def update_scores(self, player, score):
         """Updates the dataframe with the scores and player name"""
         # makes the dataframe into a new variable
         new_data = pd.DataFrame({'Player': [player], 'Score': [score]})
         # sets the original variable to combine that and new_data
-        self.scores_df = pd.concat([self.scores_df, new_data], ignore_index=True)
+        self.scores_df = pd.concat([self.scores_df, new_data],
+                                   ignore_index=True)
 
     def display_leaderboard(self):
         """Shows the leaderboard with top players and their scores"""
         # Tries this block of code
         try:
-            leaderboard = self.scores_df.sort_values(by='Score', ascending=False).head(10)
+            leaderboard = self.scores_df.sort_values(by='Score',
+                                                     ascending=False).head(10)
             print("Leaderboard:\n")
             print(leaderboard)
         except Exception as e:
@@ -62,19 +72,20 @@ class BattleshipGame:
             try:
                 if horizontal:
                     row = random.randint(0, self.board_size - 1)
-                    col = random.randint(0, self.board_size - length)  # Adjusted range
+                    col = random.randint(0, self.board_size - length)
+                    # Adjusted range
                     for i in range(length):
                         self.board[row][col + i] = 'S'
                 else:
-                    row = random.randint(0, self.board_size - length)  
+                    row = random.randint(0, self.board_size - length)
                     col = random.randint(0, self.board_size - 1)
                     for i in range(length):
                         self.board[row + i][col] = 'S'
                 self.ships.append((row, col, length, horizontal))
             except ValueError:
-                # If randrange() fails due to invalid range, retry placing the ship
+                # If randrange()
+                # fails due to invalid range, retry placing the ship
                 self.place_ships()
-
 
     def print_board(self, show_ships=False):
         """Prints the game board"""
@@ -83,12 +94,13 @@ class BattleshipGame:
             if not show_ships:
                 row = ' '.join(self.board[i])
             else:
-                row = ' '.join(['S' if cell == 'S' else 'O' for cell in self.board[i]])
+                row = ' '.join(['S' if cell == 'S'
+                                else 'O' for cell in self.board[i]])
             print(f"{i} | {row}")
 
-
     def valid_guess(self, row, col):
-        """Checks for a valid guess (within boundaries and not already guessed)"""
+        """Checks for a valid guess
+        (within boundaries and not already guessed)"""
         return (
             0 <= row < self.board_size and
             0 <= col < self.board_size
@@ -115,24 +127,26 @@ class BattleshipGame:
             return self.player_guess()
 
     def ai_guess(self):
-        """Makes the AI guess and returns a tuple of the rows and columns from the guess."""
+        """Makes the AI guess and
+        returns a tuple of the rows and columns from the guess."""
         row = random.randint(0, self.board_size - 1)
         col = random.randint(0, self.board_size - 1)
         return row, col
+
     def probability_based(self):
-            """ 
+        """
             Generates AI guess using probability
             returns a tuple with row n col indicies
             """
-            max_prob = max(max(row) for row in self.ai_probabilities)
-            for i in range (self.board_size):
-                for j in range(self.board_size):
-                    if self.ai_probabilities[i][j] == max_prob:
-                        return i,j
+        max_prob = max(max(row) for row in self.ai_probabilities)
+        for i in range(self.board_size):
+            for j in range(self.board_size):
+                if self.ai_probabilities[i][j] == max_prob:
+                    return i, j
             return self.ai_guess_random()
 
     def target_tracking(self):
-        """ 
+        """
         Generates AI guess using tracking
         returning tuple of row and col indicies
         """
@@ -141,16 +155,19 @@ class BattleshipGame:
                 if self.board[i][j] == 'H':
                     for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
                         x, y = i + dx, j + dy
-                        if 0 <= x < self.board_size and 0 <= y < self.board_size:
+                        if 0 <= x < self.board_size
+                        and 0 <= y < self.board_size:
                             if self.board[x][y] == 'O':
-                                return x,y
+                                return x, y
         return self.ai_guess_random()
+
     def play(self):
         """Starts the game and controls the flow of gameplay"""
         try:
             self.place_ships()  # Corrected line
             while self.hits < self.num_ships and self.hits < self.num_ships:
-                print("\nPlayers Turn" if self.player_vs_ai else "\nPlayer 1 go")
+                print("\nPlayers Turn"
+                      if self.player_vs_ai else "\nPlayer 1 go")
                 self.print_board()
                 if self.player_vs_ai:
                     guess_row, guess_col = self.player_guess()
@@ -175,8 +192,9 @@ class BattleshipGame:
                     # Ask user if they want to play again or exit
                     self.play_again_prompt()
 
-                if self.player_vs_ai: # if its player vs ai then
-                    print("\nAI turn") # output
+                if self.player_vs_ai:
+                    # if its player vs ai then
+                    print("\nAI turn")  # output
                     ai_guess_row, ai_guess_col = self.ai_guess()
                     # f string to tell user what ai has guessed
                     print(f"AI Guesses: {ai_guess_row}, {ai_guess_col}")
@@ -185,13 +203,13 @@ class BattleshipGame:
                         print("AI has hit your ship!")
                         # makes guess turn to an X
                         self.board[ai_guess_row][ai_guess_col] = 'X'
-                        #increments hits variable
+                        # increments hits variable
                         self.hits += 1
                         # runs function
                         print("You may have another go!")
-                    else: # otherwise
-                        print("AI has missed! ") # output
-                        t.sleep(1) # pauses program to give user chance to read
+                    else:
+                        print("AI has missed! ")
+                        t.sleep(1) #  pauses program to give user chance to read
             # Prompt user to play again or exit
             self.play_again_prompt()
         except KeyboardInterrupt: # handles user error

@@ -49,6 +49,8 @@ Battle-fleets has been tested extensively on various web browsers including Chro
 - Verified AI behavior and difficulty levels.
 - Ensured proper handling of user input and error messages.
 ## Deployment
+The site was deployed via Heroku
+
 
 ## Bugs and fixes
 
