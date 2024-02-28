@@ -24,3 +24,8 @@ View the app [here](https://ciproject3-1a2d8b8a54cb.herokuapp.com/)
 - Real-time Feedback: Receive immediate feedback on hits, misses, and game progress.
 - Score Tracking: Keep track of scores and performance over multiple game sessions.
 
+### Future Features:
+- Online Multiplayer: Enable online multiplayer functionality for users to play against friends or random opponents.
+- Advanced AI: Implement more sophisticated AI algorithms to provide a more challenging opponent.
+- Leaderboard: Introduce a global leaderboard to track high scores and player rankings.
+- Customizable Themes: Allow users to customize the game's appearance with different themes and backgrounds.
