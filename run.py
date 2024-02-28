@@ -20,7 +20,8 @@ class BattleshipGame:
         self.player_vs_ai = player_vs_ai
         # Ensure difficulty is in uppercase
         self.DIFFICULTY = DIFFICULTY.upper()
-        self.board = [['o' for _ in range(self.board_size)] for _ in range(self.board_size)]
+        self.board = [['o' for _ in range(self.board_size)]
+                      for _ in range(self.board_size)]
         # Initialize the board attribute
         self.ships = []  # sets ships to an empty array
         self.hits = 0  # sets hits to 0
@@ -209,29 +210,39 @@ class BattleshipGame:
                         print("You may have another go!")
                     else:
                         print("AI has missed! ")
-                        t.sleep(1) #  pauses program to give user chance to read
+                        t.sleep(1)
+                        #  pauses program to give user chance to read
             # Prompt user to play again or exit
             self.play_again_prompt()
-        except KeyboardInterrupt: # handles user error
-            print("\n Game interrupted by user!") # output
-        except Exception as e: # handles error
-            print("Error occurred during gameplay:", e) # shows error message
+        except KeyboardInterrupt:
+            # handles user error
+            print("\n Game interrupted by user!")
+            # output
+        except Exception as e:
+            # handles error
+            print("Error occurred during gameplay:", e)
+            # shows error message
 
-
-    
     def exit_function(self):
         """ Exits out the program. """
-        print("Well goodbye!") # output for user
-        sys.exit()  # exits program
+        print("Well goodbye!")
+        # output for user
+        sys.exit()
+        # exits program
 
     def play_again_prompt(self):
         """Ask user if they want to play again or exit."""
         while True:
-            play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+            play_again = input(
+                                "Do you want to play again? (yes/no): "
+                                ).strip().lower()
             if play_again in ['yes', 'y']:
                 print("Starting a new game...")
                 # Restart the game
-                self.__init__(self.board_size, self.num_ships, self.player_vs_ai, self.DIFFICULTY)
+                self.__init__(self.board_size,
+                              self.num_ships,
+                              self.player_vs_ai,
+                              self.DIFFICULTY)
                 self.play()
                 break
             elif play_again in ['no', 'n']:
@@ -239,15 +250,19 @@ class BattleshipGame:
             else:
                 print("Invalid input. Please enter 'yes' or 'no'.")
 
+
 def welcome_prompt():
     """ Welcome message and allows inputs for board size and number of ships"""
     print("Welcome to battleships!")
     num_ships_input = None  # Initialize num_ships_input to None
     while True:
         try:
-            board_size = int(input("Enter the board size (default is 8): \n") or 8)
+            board_size = int(input("Enter the board size (default is 8): \n")
+                             or 8)
             if board_size <= 0 or board_size > 12:
-                raise ValueError("Board size must be a positive integer greater than 0 and less than 12")
+                raise ValueError(
+                    """Board size must be a positive integer
+                    greater than 0 and less than 12""")
             break
         except ValueError as ve:
             print("Invalid input! ", ve)
@@ -256,7 +271,8 @@ def welcome_prompt():
         try:
             num_ships = int(num_ships_input)
             if num_ships <= 0 or num_ships > board_size:
-                raise ValueError(f"Number of ships must be a positive integer less than or equal to {board_size}.")
+                raise ValueError(f"""Number of ships must be a positive integer
+                less than or equal to {board_size}.""")
         except ValueError as ve:
             print("Invalid input! ", ve)
     else:  # Handle the case where user input nothing
@@ -273,18 +289,22 @@ def ai_difficulty_prompt():
         if DIFFICULTY in ['easy', 'medium', 'hard', 'cheating', 'impossible']:
             break
         else:
-            print("Invalid difficulty level. Please choose from the given options.")
+            print("""Invalid difficulty level.
+            Please choose from the given options.""")
     return DIFFICULTY
+
 
 def set_up():
     """ Sets up the game """
     board_size, num_ships = welcome_prompt()
-    player_vs_ai = input("Would you like to play against the AI? (default is yes) \n").lower() !="n"
+    player_vs_ai = input("""Would you like to play against the AI?
+    (default is yes) \n""").lower() != "n"
     if player_vs_ai:
         DIFFICULTY = ai_difficulty_prompt()
     else:
         DIFFICULTY = 'medium'
     return BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
+
 
 def main():
     """ starts game and controls flow of it """
@@ -293,6 +313,7 @@ def main():
         game.play()
     except Exception as e:
         print("Unexpected error", e)
+
 
 if __name__ == "__main__":
     try:
