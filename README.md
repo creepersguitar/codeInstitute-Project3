@@ -10,7 +10,7 @@ View the app [here](https://ciproject3-1a2d8b8a54cb.herokuapp.com/)
 2. [Features](#features)
 3. [Testing](#testing)
 4. [Deployment](#deployment)
-5. [Errors and Fixes](#errors-and-fixes)
+5. [Bugs and Fixes](#bugs-and-fixes)
 6. [Sources and Credits](#sources-and-credits)
 
 ## Design
@@ -49,3 +49,11 @@ Battle-fleets has been tested extensively on various web browsers including Chro
 - Verified AI behavior and difficulty levels.
 - Ensured proper handling of user input and error messages.
 ## Deployment
+
+## Bugs and fixes
+
+
+## Sources and Credits
+- Code Institute's GitHub repository for providing the project template and guidance.
+- Spencer Barriball for his invaluable mentorship and support throughout the development process.
+- Pylint to help make the code look more sensible
