@@ -9,7 +9,7 @@ View the app [here](https://ciproject3-1a2d8b8a54cb.herokuapp.com/)
 1. [Design](#design)
 2. [Features](#features)
 3. [Testing](#testing)
-4. [User Experience (UX)](#user-experience-ux)
+4. [Deployment](#deployment)
 5. [Errors and Fixes](#errors-and-fixes)
 6. [Sources and Credits](#sources-and-credits)
 
@@ -48,3 +48,4 @@ Battle-fleets has been tested extensively on various web browsers including Chro
 - checked for the CSV file being updated every time a game is completed
 - Verified AI behavior and difficulty levels.
 - Ensured proper handling of user input and error messages.
+## Deployment
