@@ -10,7 +10,8 @@ View the app [here](https://ciproject3-1a2d8b8a54cb.herokuapp.com/)
 2. [Features](#features)
 3. [Testing](#testing)
 4. [User Experience (UX)](#user-experience-ux)
-5. [Sources and Credits](#sources-and-credits)
+5. [Errors and Fixes](#errors-and-fixes)
+6. [Sources and Credits](#sources-and-credits)
 
 ## Design
 - The design of Battle-fleets focuses on simplicity, intuitiveness, and visual appeal. 
@@ -29,3 +30,4 @@ View the app [here](https://ciproject3-1a2d8b8a54cb.herokuapp.com/)
 - Advanced AI: Implement more sophisticated AI algorithms to provide a more challenging opponent.
 - Leaderboard: Introduce a global leaderboard to track high scores and player rankings.
 - Customizable Themes: Allow users to customize the game's appearance with different themes and backgrounds.
+
