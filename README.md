@@ -21,7 +21,7 @@ View the app [here](https://ciproject3-1a2d8b8a54cb.herokuapp.com/)
 ### Key Features:
 - Player vs AI: Challenge the computer in a single-player mode.
 - Player vs Player: Compete against a friend in a two-player mode.
-- Customizable Settings: Adjust game parameters such as [board size](./readme_Images/board_size.png) and [ship placement](./readme_Images/ship_placement.png) rules.
+- Customizable Settings: Adjust game parameters such as ![board size](assets/readme_Images/board_size.png) and ![ship placement](assets/readme_Images/ship_placement.png) rules.
 - Real-time Feedback: Receive immediate feedback on hits, misses, and game progress.
 - Score Tracking: Keep track of scores and performance over multiple game sessions.
 
