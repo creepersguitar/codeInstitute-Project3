@@ -93,9 +93,17 @@ The site was deployed via Heroku
 - Finally click on the open app button and you can now view the application
 
 ## Bugs and fixes
-
-
+- **Line 241 Invalid Syntax:** Separated the parameter into different lines.
+- **'DataFrame' object has no attribute 'append':** Changed lines 30 and 31 to correct the append attribute.
+- **Error occurred during gameplay: empty range in randrange(0, -1):** Fixed the randrange issue but do need to test more to see if error reoccurrs.
+- **Error loading scoreboard module 'pandas' has no attribute 'read':** Fixed the attribute error by separating onto different lines.
+- **Error occurred during gameplay: name 'dsplay_leaderboard' is not defined:** Corrected the function name (changed `dsplay_leaderboard` to `display_leaderboard`).
+- **Error occurred during gameplay: 'BattleshipGame' object has no attribute 'display_leaderboard':** Unindented lines 27-35.
+- **Error occurred during gameplay: 'BattleshipGame' object has no attribute 'exit_game':** Changed `exit_game` to `exit_function`.
+- **SyntaxError 'break' outside loop on line 127:** Fixed the indentation.
+- **NameError: name 'main()' is not defined:** Defined the 'main()' function.
 ## Sources and Credits
 - Code Institute's GitHub repository for providing the project template and guidance.
 - Spencer Barriball for his invaluable mentorship and support throughout the development process.
 - Pylint to help make the code look more sensible
+- Code Institutes python tester to also help check for errors
