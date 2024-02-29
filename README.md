@@ -50,7 +50,47 @@ Battle-fleets has been tested extensively on various web browsers including Chro
 - Ensured proper handling of user input and error messages.
 ## Deployment
 The site was deployed via Heroku
+- Firstly to create the requirements to help heroku build the application we type "pip3 freeze > requirements.txt"
+- next you push what you have done over to github by:
++ typing 'git add .'
++ then 'git commit -m "froze requirements.txt"'
++ then finally typing 'git push'
+- after that we open up a browser and search for [heroku](https://www.heroku.com)
+- then once we are on the home page we click on the signup button (or the login button if you already have an account)
+- Heroku will then send you a confirmation email which you will need to click on the link within that email.
+- hopefully if you have done all of the steps correctly you should be taken to the main dashboard
+- From the dashboard we click on create new app
+- then you enter a name for your project *please note that no two app names will be the same*
+- then you click on a drop down box and pick your region
+- afterwards you click on create app
+- once you click on the create app button you should see a load of headings
+- You click on the settings heading
+- then scroll (or press the down arrow if you don't have a mouse with you) till you see the config vars section.
++ if you have scrolled to the config vars section you copy and paste your creds.json file into the 'VALUE' field
++ in the KEY field you type in CREDS
++ then you click on add
 
++ within the KEY section you add the word PORT and in the VALUE field you add 8000 then click add
+- Afterwards you then get to scroll down to the buildpacks section to add two buildpacks.
+- Click on add buildpack
+- then click on python and save changes
+- Click on add buildpack again
+- then click on node.js and save changes
+*Please make sure that python is on the top and node.js is on the bottom*
+- Scroll all the way up to the top of the page and click on deploy
+- Then there should be a button which says 'Github' click on it
+- Then click on the button which says connect to github
+- In a search bar (which should appear if you've clicked on connect to github) enter your repository name
+- After that click on the search button
+- Then you can click connect
+- There is now two options either setup automatic deploys or leave it as manual (i prefer to setup automatic deploys)
++ to set up manual deploys you just click deploy branch
+*please note you will have to do this every time you want to deploy a newer version of your application*
++ to set up automatic deploys you make sure that the drop down box is set to master *this is underneath choose a branch to deploy*
++ you then click enable automatic deploys
++ finally click deploy branch
+- now just sit back and wait for heroku to build the application
+- Finally click on the open app button and you can now view the application
 
 ## Bugs and fixes
 
