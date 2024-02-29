@@ -21,7 +21,7 @@ View the app [here](https://ciproject3-1a2d8b8a54cb.herokuapp.com/)
 ### Key Features:
 - Player vs AI: Challenge the computer in a single-player mode.
 - Player vs Player: Compete against a friend in a two-player mode.
-- Customizable Settings: Adjust game parameters such as board size and ship placement rules.
+- Customizable Settings: Adjust game parameters such as [board size](./readme_Images/board_size.png) and [ship placement](./readme_Images/ship_placement.png) rules.
 - Real-time Feedback: Receive immediate feedback on hits, misses, and game progress.
 - Score Tracking: Keep track of scores and performance over multiple game sessions.
 
@@ -34,6 +34,7 @@ View the app [here](https://ciproject3-1a2d8b8a54cb.herokuapp.com/)
 
 
 ## Testing
+- There is one error which i will need to debug personally after the course of when the AI hits your ship once, the game ends and the play_again function is run.
 ### Browser Testing:
 Battle-fleets has been tested extensively on various web browsers including Chrome, Firefox, Safari, and Edge to ensure compatibility and optimal performance across different platforms.
 | Browser | Layout + Functionality |
@@ -93,6 +94,8 @@ The site was deployed via Heroku
 - Finally click on the open app button and you can now view the application
 
 ## Bugs and fixes
+- There is one error which i will need to debug personally after the course of when the AI hits your ship once, the game ends and the play_again function is run.
+
 - **Line 241 Invalid Syntax:** Separated the parameter into different lines.
 - **'DataFrame' object has no attribute 'append':** Changed lines 30 and 31 to correct the append attribute.
 - **Error occurred during gameplay: empty range in randrange(0, -1):** Fixed the randrange issue but do need to test more to see if error reoccurrs.
