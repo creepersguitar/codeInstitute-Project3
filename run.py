@@ -27,6 +27,7 @@ class BattleshipGame:
         self.hits = 0  # sets hits to 0
         self.scores_df = pd.DataFrame(columns=['Player', 'Score'])
         # makes a dataframe with columns player and score
+        self.load_scores_csv()
 
     def update_scores(self, player, score):
         """Updates the dataframe with the scores and player name"""
