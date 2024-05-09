@@ -258,7 +258,8 @@ def welcome_prompt():
     num_ships_input = None  # Initialize num_ships_input to None
     while True:
         try:
-            board_size = int(input("Enter the board size between 0-10 (default is 8): \n")
+            board_size = int(input("""Enter the board size between 0-10
+            (default is 8): \n""")
                              or 8)
             if board_size <= 0 or board_size > 10:
                 raise ValueError(
