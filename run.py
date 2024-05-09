@@ -277,15 +277,19 @@ def welcome_prompt():
 def ai_difficulty_prompt():
     """Prompt for AI difficulty."""
     while True:
-        DIFFICULTY = input("""Choose difficulty
-        (easy/medium/hard/cheating/impossible, default is medium): \n""")
-        DIFFICULTY = DIFFICULTY.lower() or 'medium'
-        if DIFFICULTY in ['easy', 'medium', 'hard', 'cheating', 'impossible']:
-            break
-        else:
-            print("""Invalid difficulty level.
-            Please choose from the given options.""")
+        try:
+            DIFFICULTY = input("""Choose difficulty
+            (easy/medium/hard/cheating/impossible, default is medium): \n""")
+            DIFFICULTY = DIFFICULTY.lower() or 'medium'
+            if DIFFICULTY in ['easy', 'medium', 'hard', 'cheating', 'impossible']:
+                break
+            else:
+                print("""Invalid difficulty level.
+                Please choose from the given options.""")
+        except ValueError:
+            print("Invalid input! Please try again.")
     return DIFFICULTY
+
 
 
 def set_up():
