@@ -294,14 +294,26 @@ def ai_difficulty_prompt():
 
 def set_up():
     """ Sets up the game """
-    board_size, num_ships = welcome_prompt()
-    player_vs_ai = input("""Would you like to play against the AI?
-    (default is yes) \n""").lower() != "n"
-    if player_vs_ai:
-        DIFFICULTY = ai_difficulty_prompt()
-    else:
-        DIFFICULTY = 'medium'
-    return BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
+    try:
+        board_size, num_ships = welcome_prompt()
+        player_vs_ai = input("""Would you like to play against the AI?
+        (default is yes) \n""").lower() != "n"
+        if player_vs_ai:
+            DIFFICULTY = ai_difficulty_prompt()
+        else:
+            DIFFICULTY = 'medium'
+        return BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
+    except Exception as e:
+        print("Error occurred during game setup:", e)
+        # Prompt the user to retry or exit
+        retry = input("An error occurred during game setup. Do you want to retry? (yes/no): ").lower()
+        if retry == "yes" or retry == "y":
+            # Retry game setup
+            return set_up()
+        else:
+            # Return None to indicate setup failure
+            return None
+
 
 
 def main():
