@@ -315,10 +315,14 @@ def set_up():
         except ValueError as ve:
             print("Error occurred during game setup:", ve)
             # Prompt the user to retry or exit
+        while True:
             retry = input("Do you want to retry game setup? (yes/no): ").lower()
-            if retry not in ('yes', 'y'):
-                # Return None to indicate setup failure
+            if retry in ('yes', 'y'):
+                break
+            elif retry in ('no', 'n'):
                 return None
+            else:
+                print("Invalid input. Please enter 'yes' or 'no'.")
 
 
 def main():
