@@ -294,26 +294,31 @@ def ai_difficulty_prompt():
 
 def set_up():
     """ Sets up the game """
-    try:
-        board_size, num_ships = welcome_prompt()
-        player_vs_ai = input("""Would you like to play against the AI?
-        (default is yes) \n""").lower() != "n"
-        if player_vs_ai:
-            DIFFICULTY = ai_difficulty_prompt()
-        else:
-            DIFFICULTY = 'medium'
-        return BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
-    except Exception as e:
-        print("Error occurred during game setup:", e)
-        # Prompt the user to retry or exit
-        retry = input("An error occurred during game setup. Do you want to retry? (yes/no): ").lower()
-        if retry == "yes" or retry == "y":
-            # Retry game setup
-            return set_up()
-        else:
-            # Return None to indicate setup failure
-            return None
-
+    while True:
+        try:
+            board_size, num_ships = welcome_prompt()
+            if not (1 <= board_size <= 10 and 1 <= num_ships <= board_size):
+                raise ValueError("Invalid board size or number of ships. Board size must be between 1 and 10, and number of ships must be between 1 and the board size.")
+            
+            player_vs_ai_input = input("""Would you like to play against the AI?
+            (default is yes) \n""").lower()
+            if player_vs_ai_input in ('yes', 'y'):
+                player_vs_ai = True
+                DIFFICULTY = ai_difficulty_prompt()
+            elif player_vs_ai_input in ('no', 'n'):
+                player_vs_ai = False
+                DIFFICULTY = 'medium'
+            else:
+                raise ValueError("Invalid input. Please enter 'yes' or 'no'.")
+            
+            return BattleshipGame(board_size, num_ships, player_vs_ai, DIFFICULTY)
+        except ValueError as ve:
+            print("Error occurred during game setup:", ve)
+            # Prompt the user to retry or exit
+            retry = input("Do you want to retry game setup? (yes/no): ").lower()
+            if retry not in ('yes', 'y'):
+                # Return None to indicate setup failure
+                return None
 
 
 def main():
