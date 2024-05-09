@@ -255,32 +255,24 @@ class BattleshipGame:
 def welcome_prompt():
     """ Welcome message and allows inputs for board size and number of ships"""
     print("Welcome to battleships!")
-    num_ships_input = None  # Initialize num_ships_input to None
     while True:
         try:
-            board_size = int(input("""Enter the board size between 0-10
-            (default is 8): \n""")
-                             or 8)
-            if board_size <= 0 or board_size > 10:
-                raise ValueError(
-                    """Board size must be a positive integer
-                    greater than 0 and less than 10""")
+            board_size = int(input("Enter the board size between 1 and 10 (default is 8): \n") or 8)
+            if not 1 <= board_size <= 10:
+                raise ValueError("Board size must be between 1 and 10")
             break
         except ValueError as ve:
             print("Invalid input! ", ve)
-    num_ships_input = input("Enter number of ships (default is 5): \n")
-    if num_ships_input:  # Check if user input anything
+    while True:
         try:
+            num_ships_input = input("Enter number of ships (default is 5): \n") or '5'
             num_ships = int(num_ships_input)
-            if num_ships <= 0 or num_ships > board_size:
-                raise ValueError(f"""Number of ships must be a positive integer
-                less than or equal to {board_size}.""")
+            if not 1 <= num_ships <= board_size:
+                raise ValueError(f"Number of ships must be between 1 and {board_size}")
+            break
         except ValueError as ve:
             print("Invalid input! ", ve)
-    else:  # Handle the case where user input nothing
-        num_ships = 5
     return board_size, num_ships
-
 
 def ai_difficulty_prompt():
     """Prompt for AI difficulty."""
