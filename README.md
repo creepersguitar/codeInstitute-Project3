@@ -106,6 +106,18 @@ The site was deployed via Heroku
 - **Error occurred during gameplay: 'BattleshipGame' object has no attribute 'exit_game':** Changed `exit_game` to `exit_function`.
 - **SyntaxError 'break' outside loop on line 127:** Fixed the indentation.
 - **NameError: name 'main()' is not defined:** Defined the 'main()' function.
+
+## resubmission requirements and completions
+This is my first resubmission attempt (Which is capped at a pass). Below are points that i failed on and then what i did to try to correct the issue.
+
+- **1.2 web application fails to demonstrate intended functionality as defined in the README. The code breaks on invalid inputs e.g. board size:** I have added "try except statements" onto the input statements so they don't break and crash the program.
+- **2.1 application breaks in the event of invalid input statements:** I have added "try except statements" onto the input statements so they don't break and crash the program.
+- **3.2 lack of exception/error handling causes program to break:** I have added "try except statements" onto the input statements so they don't break and crash the program.
+- **4.1 The README isn't particullarly cohesive or well-organised, but all sections are apparent and can easily be assessed:** I have restructured the README file and extended it by making use of screenshots aswell as adding details on what i failed on and how i ammended the program to fix the issues.
+- **4.2 The General idea behind the app is noted, but the benefits behind the benefits it provides to users can be made more clearer through use of screenshots from the finished product and notes to prove the overall value that the application provides to the users.** I have added screenshots of the finished product into the README file and made a section within the README file about the value my application has to the end users.
+- **5.1 The README file contains a note about passing the PEP8 validator, however, no results are documented.** I have added a section into the README file to talk about the code passing the PEP8 validation tool.
+- **7.1 interactions with internal/external data sources (either on the main.py file or a seperate .py file) are not cohesive and data is not properly handled accross the various functionality**
+
 ## Sources and Credits
 - Code Institute's GitHub repository for providing the project template and guidance.
 - Spencer Barriball for his invaluable mentorship and support throughout the development process.
