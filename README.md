@@ -58,8 +58,19 @@ Battle-fleets has been extensively tested on various web browsers including Chro
 ## Exception handling
 The code implements several 'try except' blocks to catch any erroneous or invalid inputs which the end user could accidentally input.
 
-These first 2 screenshots are about the input for the board size.
+- These first 2 screenshots are about the input for the board size.
 ![first-board-size](assets/readme_Images/board_size_error.png)
+This first screenshot shows an error of when someone has tried to enter a number thats less than 0
+
+![second-board-size](assets/readme_Images/board_size_error_base10.png)
+This second screenshot shows an error of inputing letters instead of a number.
+
+- These next 2 screenshots are about the input for the number of ships which should be a number.
+![first-num-ships](assets/readme_Images/num_ships_bellow0_error.png)
+This first screenshot shows an error message when the end user inputs a number less than 0 which causes the program to force the user to re-enter their input.
+
+![second-num-ships](assets/readme_Images/num_ships_base10_error.png)
+This second screenshot shows an error message of the user who inputed a letter or a string of letters which also forces the user to re-enter their input as a number.
 
 
 ## Deployment
