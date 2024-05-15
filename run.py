@@ -256,13 +256,14 @@ def welcome_prompt():
     """ Welcome message and allows inputs for board size and number of ships"""
     print("Welcome to battleships!")
     while True:
+        board_size_input = input("Enter the board size between 1 and 10 (default is 8): \n") or '8'
         try:
-            board_size = int(input("Enter the board size between 1 and 10 (default is 8): \n") or 8)
+            board_size = int(board_size_input)
             if not 1 <= board_size <= 10:
                 raise ValueError("Board size must be between 1 and 10")
             break
         except ValueError as ve:
-            print("Invalid input! ", ve)
+            print("Invalid input! Please enter a number between 1 and 10.")
     while True:
         try:
             num_ships_input = input("Enter number of ships (default is 5): \n") or '5'
