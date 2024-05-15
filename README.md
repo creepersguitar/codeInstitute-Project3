@@ -10,12 +10,13 @@ Battle-fleets is a classic battleship game designed to provide users with an eng
 2. [Design](#design)
 3. [Features](#features)
 4. [Testing](#testing)
-5. [Deployment](#deployment)
-6. [Bugs and Fixes](#bugs-and-fixes)
-7. [Resubmission Requirements and Completions](#resubmission-requirements-and-completions)
-8. [Value to End Users](#value-to-end-users)
-9. [PEP8 Validator](#pep8-validator)
-10. [Sources and Credits](#sources-and-credits)
+5. [Exception handling](#exceptions)
+6. [Deployment](#deployment)
+7. [Bugs and Fixes](#bugs-and-fixes)
+8. [Resubmission Requirements and Completions](#resubmission-requirements-and-completions)
+9. [Value to End Users](#value-to-end-users)
+10. [PEP8 Validator](#pep8-validator)
+11. [Sources and Credits](#sources-and-credits)
 
 ## Introduction
 Battle-fleets is a web-based battleship game that offers single-player and two-player modes, customizable settings, and real-time feedback. This README provides an overview of the project's design, features, testing, deployment process, bug fixes, and sources.
@@ -53,6 +54,13 @@ Battle-fleets has been extensively tested on various web browsers including Chro
 - Checked for correct ship placement and alignment.
 - Verified AI behavior and difficulty levels.
 - Ensured proper handling of user input and error messages.
+
+## Exception handling
+The code implements several 'try except' blocks to catch any erroneous or invalid inputs which the end user could accidentally input.
+
+These first 2 screenshots are about the input for the board size.
+[first-board-size](assets/readme_Images/board_size_error.png)
+
 
 ## Deployment
 Battle-fleets was deployed via Heroku following these steps:
