@@ -265,14 +265,14 @@ def welcome_prompt():
         except ValueError as ve:
             print("Invalid input! Please enter a number between 1 and 10.")
     while True:
+        num_ships_input = input("Enter number of ships (default is 5): \n") or '5'
         try:
-            num_ships_input = input("Enter number of ships (default is 5): \n") or '5'
             num_ships = int(num_ships_input)
             if not 1 <= num_ships <= board_size:
                 raise ValueError(f"Number of ships must be between 1 and {board_size}")
             break
         except ValueError as ve:
-            print("Invalid input! ", ve)
+            print("Invalid input! Please enter a valid number for the number of ships.")
     return board_size, num_ships
 
 def ai_difficulty_prompt():
