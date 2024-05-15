@@ -59,7 +59,7 @@ Battle-fleets has been extensively tested on various web browsers including Chro
 The code implements several 'try except' blocks to catch any erroneous or invalid inputs which the end user could accidentally input.
 
 These first 2 screenshots are about the input for the board size.
-[first-board-size](assets/readme_Images/board_size_error.png)
+![first-board-size](assets/readme_Images/board_size_error.png)
 
 
 ## Deployment
