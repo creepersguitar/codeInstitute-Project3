@@ -40,7 +40,7 @@ Battle-fleets provides real-time feedback on gameplay, including hits, misses, a
 With the option for two-player mode, Battle-fleets encourages social interaction and friendly competition among users. Whether playing with friends or challenging opponents online, users can enjoy a shared gaming experience and strengthen social connections.
 
 ### 6. Continuous Improvement
-As users engage in multiple game sessions, they have the opportunity to improve their skills and strategies over time. Whether aiming to beat their own high scores or climb the global leaderboard, Battle-fleets motivates users to strive for continuous improvement and mastery of the game.
+As users engage in multiple game sessions, they have the opportunity to improve their skills and strategies over time. Whether aiming to beat their own high scores or climb the leaderboard, Battle-fleets motivates users to strive for continuous improvement and mastery of the game.
 
 ### 7. Accessibility
 As a web-based game, Battle-fleets offers accessibility across various devices and platforms with an internet connection. Users can enjoy the game on desktops, laptops, tablets, or smartphones, making it convenient to play anytime, anywhere.
@@ -65,7 +65,7 @@ The design of Battle-fleets focuses on simplicity, intuitiveness, and visual app
 ### Future Features (Planned):
 - **Online Multiplayer:** Enable online multiplayer functionality for users to play against friends or random opponents.
 - **Advanced AI:** Implement more sophisticated AI algorithms to provide a more challenging opponent.
-- **Leaderboard:** Introduce a global leaderboard to track high scores and player rankings.
+- **Leaderboard:** Introduce a leaderboard to track high scores and player rankings.
 - **Customizable Themes:** Allow users to customize the game's appearance with different themes and backgrounds.
 
 ## Testing
