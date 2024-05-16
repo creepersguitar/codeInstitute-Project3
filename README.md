@@ -60,19 +60,30 @@ The code implements several 'try except' blocks to catch any erroneous or invali
 
 - These first 2 screenshots are about the input for the board size.
 ![first-board-size](assets/readme_Images/board_size_error.png)
-This first screenshot shows an error of when someone has tried to enter a number thats less than 0
+This first screenshot shows an error of when someone has tried to enter a number thats less than 0 which causes the program to force the user to re-enter their input. This error message is caused by a try-except block of code within the main program.
 
 ![second-board-size](assets/readme_Images/board_size_error_base10.png)
-This second screenshot shows an error of inputing letters instead of a number.
 
-- These next 2 screenshots are about the input for the number of ships which should be a number.
+This second screenshot shows an error of inputing letters instead of a number which causes the program to force the user to re-enter their input. This error message is caused by a try-except block of code within the main program.
+
+These next 2 screenshots are about the input for the number of ships which should be an integer and what happens if the end users input anything which could cause errors such as letters or erroneous inputs or even just human error.
 ![first-num-ships](assets/readme_Images/num_ships_bellow0_error.png)
-This first screenshot shows an error message when the end user inputs a number less than 0 which causes the program to force the user to re-enter their input.
+This first screenshot shows an error message when the end user inputs a number less than 0 which causes the program to force the user to re-enter their input. This error message is caused by a try-except block of code within the main program.
 
 ![second-num-ships](assets/readme_Images/num_ships_base10_error.png)
 This second screenshot shows an error message of the user who inputed a letter or a string of letters which also forces the user to re-enter their input as a number.
 
+![correct-num-ships](assets/readme_Images/ship_placement.png)
+This screenshot shows the input for the number of ships when the end user inputs a valid integer which does not cause the program to crash or cause them to re-input a valid integer
+### AI error handling
+These screenshots are showing the errors and correct input for picking if the user wants to play against the AI and what happens if the end user accidentally causes any errors.
 
+![ai-base-10](assets/readme_Images/ai_base10_error.png)
+This screenshot (as seen above), shows what happens if the end user types in numbers (integers) rather than yes or no.
+It causes a different function to make the users go through the first 3 questions again to try to get a valid input.
+
+![ai-incorrect](assets/readme_Images/ai_error_incorrect_input.png)
+This screenshot shows what happens if the end user types in a string which is not yes or no. It causes a different function to make the users go through the first 3 questions again to try to get a valid input.
 ## Deployment
 Battle-fleets was deployed via Heroku following these steps:
 1. Create requirements.txt.
