@@ -138,6 +138,35 @@ Several bugs were identified and fixed during development:
 - Error occurred during gameplay: 'BattleshipGame' object has no attribute 'exit_game': Changed `exit_game` to `exit_function`.
 - SyntaxError 'break' outside loop on line 127: Fixed the indentation.
 - NameError: name 'main()' is not defined: Defined the 'main()' function.
+### Known Issue: Error When Not All Ships Are Sunk
+
+#### Description:
+When not all ships are sunk and the user is prompted for another turn, an error occurs within the program. This error interrupts the normal flow of the game and may lead to unexpected behavior or undesired outcomes.
+
+#### Symptoms:
+- The program prompts the user for another turn even though not all ships have been sunk.
+- Upon proceeding with another turn, the program encounters an error or behaves unexpectedly.
+
+#### Reproduction Steps:
+1. Start a new game session.
+2. Place the ships on the game board.
+3. Play the game until at least one ship remains unsunk.
+4. Observe the program prompting for another turn despite the presence of unsunk ships.
+
+#### Expected Behavior:
+The program should accurately determine when all ships have been sunk and proceed accordingly. If any ships remain unsunk, the program should not prompt the user for another turn but instead continue the game until all ships are sunk.
+
+#### Context:
+The error is likely occurring within the game logic that determines whether all ships have been sunk before prompting the user for another turn. Possible causes of this error include incorrect condition checks, improper handling of ship sinking events, or a discrepancy between the game state and the victory condition.
+
+#### Resolution:
+To resolve this error, the game logic responsible for determining the game state and triggering the end of the game should be thoroughly reviewed and debugged. Ensure that the conditions for ending the game are accurately implemented and reflect the correct state of ship positions and sinking status. Additionally, consider adding comprehensive error handling to gracefully handle unexpected conditions and prevent the program from crashing or entering an inconsistent state.
+
+#### Testing Plan:
+1. Review and update the game logic related to determining the end of the game.
+2. Test the updated logic with various game scenarios, including cases where not all ships are sunk.
+3. Verify that the program behaves as expected and accurately reflects the game state.
+4. Conduct regression testing to ensure that the error has been resolved without introducing new issues.
 
 ## Resubmission Requirements and Completions
 This is the first resubmission attempt, focusing on improving the following areas:
