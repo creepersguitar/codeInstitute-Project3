@@ -160,7 +160,7 @@ The program should accurately determine when all ships have been sunk and procee
 The error is likely occurring within the game logic that determines whether all ships have been sunk before prompting the user for another turn. Possible causes of this error include incorrect condition checks, improper handling of ship sinking events, or a discrepancy between the game state and the victory condition.
 
 #### Resolution:
-To resolve this error, the game logic responsible for determining the game state and triggering the end of the game should be thoroughly reviewed and debugged. Ensure that the conditions for ending the game are accurately implemented and reflect the correct state of ship positions and sinking status. Additionally, consider adding comprehensive error handling to gracefully handle unexpected conditions and prevent the program from crashing or entering an inconsistent state.
+To resolve this error, the game logic responsible for determining the game state and triggering the end of the game will be thoroughly reviewed and debugged to ensure that the conditions for ending the game are accurately implemented and reflect the correct state of ship positions and sinking status. Additionally, i would consider adding comprehensive error handling to gracefully handle unexpected conditions and prevent the program from crashing or entering an inconsistent state.
 
 #### Testing Plan:
 1. Review and update the game logic related to determining the end of the game.
