@@ -67,6 +67,9 @@ The design of Battle-fleets focuses on simplicity, intuitiveness, and visual app
 - **Advanced AI:** Implement more sophisticated AI algorithms to provide a more challenging opponent.
 - **Leaderboard:** Introduce a leaderboard to track high scores and player rankings.
 - **Customizable Themes:** Allow users to customize the game's appearance with different themes and backgrounds.
+- **Player vs Player** Expand on the player vs player senario to allow the users to not see the game boards of their opponent.
+- **Player vs AI** Expand on the player vs ai senarios to allow for the users to just see their board rather than the AIs board.
+
 
 ## Testing
 ### Browser Testing:
